@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SocketIOTest from './components/SocketIOTest';
+import React from 'react';
+import Main from './components/coreComponents/Main';
 
 function App() {
   return (
-    <React.Fragment>
-      <SocketIOTest />
-    </React.Fragment>
+    <div >
+     <Main/>
+    </div>
   );
 }
 

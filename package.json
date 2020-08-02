@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "node server/server.js",
+    "start": "react-scripts start",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && npm run build"
   },
   "eslintConfig": {
@@ -32,6 +32,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://todo-app-services.herokuapp.com/"
+  }
 }
