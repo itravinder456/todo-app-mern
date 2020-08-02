@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require('path'); 
+const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const todoRoute = require("./routes/todoRoute")
@@ -10,6 +11,7 @@ const todoRoute = require("./routes/todoRoute")
 const dbConnection = require('./dbConfig/dbConnection')
 dbConnection() 
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use('/uploads', express.static('uploads')); 
 app.use(express.static(path.join(__dirname, '../build'))) 
