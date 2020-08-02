@@ -275,3 +275,17 @@
     height: 92% !important;
     margin-left: 1% !important;
 }
+.mlp75{
+  margin-left: 75%;
+}
+.pullRight{
+  justify-content: flex-end;
+}
+
+/* --------------------Landing page start------------------------------------------- */
+.welomePage{
+background: url('../img/welcome-bg.jpg');
+background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
