@@ -6,9 +6,8 @@ export default class Main extends Component {
   render() {
     return (
       <>
-      
-{/* <UserContent/> */}
-      <WelcomePage/>
+
+      {/* <WelcomePage/> */}
       </>
     )
   }

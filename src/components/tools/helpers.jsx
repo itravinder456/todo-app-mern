@@ -1,5 +1,21 @@
-import $ from 'jquery'
-
+import axios from "axios";
+export const restApiCall=async(url,method)=>{
+    const config = {
+        url: url,
+        method: method
+      };
+     let responseData= await axios(config)
+        .then(result => {
+          return result
+        })
+        .catch(error => {
+          if (error == "Network Error") {
+          } else {
+          }
+        });
+    
+    return responseData
+}
 
 // export const toggleTheme=()=>{
 //         let iTypeTheme = document.getElementById("iTypeTheme");

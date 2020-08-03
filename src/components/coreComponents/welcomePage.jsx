@@ -4,7 +4,7 @@ import UserLogin  from './userComponents/userLogin';
 const WelcomePage=()=>{
     return(
         <div className="welomePage">
-          <UserLogin/>
+          <UserLogin />
       
       </div>
     )
