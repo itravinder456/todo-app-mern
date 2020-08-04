@@ -1,7 +1,7 @@
 import userConstants from '../userConstants/userConstants'
 
 const initial_state = {
-    email: "kjncjkascnjask"
+    loginedUser:null 
 }
 
 const userLoginReducer = (state = initial_state, action) => {
@@ -9,7 +9,7 @@ const userLoginReducer = (state = initial_state, action) => {
         case userConstants.user_Login:
             return {
                 ...state,
-                email: action.payload
+                loginedUser: action.payload
             }
         default:
             return {

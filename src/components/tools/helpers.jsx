@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from "axios";import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
 export const restApiCall=async(url,method)=>{
     const config = {
         url: url,

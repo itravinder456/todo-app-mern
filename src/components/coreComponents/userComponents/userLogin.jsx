@@ -1,7 +1,8 @@
 import React,{useReducer} from 'react'
 import {connect} from "react-redux"
-import {loginUser} from '../../Redux/userActions/user.action'
+import loginUserRequest from '../../Redux/userActions/user.action'
 import userLoginReducer from '../../Redux/userReducers/user.login.reducer'
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
   const UserLogin = () => {
       const [user,setUser]=useReducer(
@@ -11,12 +12,16 @@ import {Link} from 'react-router-dom'
             password: ''
         }
       );
-      const handleUser=(e,name)=>{
+      let dispatch=useDispatch()
+        const handleUser=(e,name)=>{
           let value=e.target.value
           setUser({[name]: value});
         }
-        const handleSubmite=()=>{
-
+        const handleSubmit=(e)=>{
+            e.preventDefault();
+            if (user.email  !=="" && user.password !=="" ) {
+                dispatch(loginUserRequest(user))
+            }
         }
     return (
         <div>
@@ -35,7 +40,7 @@ import {Link} from 'react-router-dom'
                                         </div>
                                         <div className="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <Link to='/forgotPassword'>Forgot Password? </Link> 
-                                        <Link className="btn btn-primary" to='/'> Login</Link> 
+                                        <Link onClick={handleSubmit} className="btn btn-primary" to='/'> Login</Link> 
     
                                         
                                         
@@ -57,7 +62,6 @@ import {Link} from 'react-router-dom'
 }
 
 const matStateToprops=(state)=>{
-    console.log("abdjasbdabdasdasdask",state.user.state.email)
       return { email:state.user.state.email}
 
 }

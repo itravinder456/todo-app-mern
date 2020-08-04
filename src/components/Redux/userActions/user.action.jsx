@@ -1,5 +1,7 @@
 import {restApiCall }from '../../tools/helpers'
 import userConstants from '../userConstants/userConstants'
+import { createBrowserHistory } from 'history';
+import { useHistory } from "react-router-dom";
 
 // export function loginUser({ username, password }) {
 //     return  async (dispatch) =>{
@@ -23,7 +25,14 @@ import userConstants from '../userConstants/userConstants'
 //     // }
 //   };
 // }
-  export function loginUser(payload) {
+  const  loginUserRequest=(payload)=> {
+    return dispatch=>{
+     window.location.href="/userHome"
+      dispatch(loginPayload(payload));
+    }
+  }
+  export default loginUserRequest
+  export function loginPayload (payload) {
     return {
       type: userConstants.user_Login,
       payload
