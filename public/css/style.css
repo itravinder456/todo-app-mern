@@ -281,7 +281,16 @@
 .pullRight{
   justify-content: flex-end;
 }
-
+.mbP5{
+  margin-bottom: 5%;
+}
+.tableHeader{
+ 
+  margin-bottom: -18px !important;
+}
+.mt20{
+  margin-top: 20px !important;
+}
 /* --------------------Landing page start------------------------------------------- */
 .welomePage{
 background: url('../img/welcome-bg.jpg');
