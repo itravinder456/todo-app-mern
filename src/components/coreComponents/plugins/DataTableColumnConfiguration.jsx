@@ -16,6 +16,13 @@ export const columns = memoize((clickHandler) => [
     // width: "15%",
   },
   {
+    name: "Status",
+    selector: "todoStatus",
+    sortable: true,
+    // right: true,
+    // width: "15%",
+  },
+  {
     name: "Created by",
     selector: "createdUserId",
     sortable: true,
@@ -23,7 +30,7 @@ export const columns = memoize((clickHandler) => [
     // right: true,
   },
   {
-    name: "Date Recieved",
+    name: "Date Added",
     selector: "createdDate",
     sortable: true,
     // width: "13.8%",
@@ -32,13 +39,21 @@ export const columns = memoize((clickHandler) => [
   {
     cell: (row) => (
       <div className="table-actions">
-        <a className="mr-3">
-          {/* <i id="edit" onClick={clickHandler} class="la la-edit"></i> */}
+        <a
+          className="mr-3"
+          id="edit"
+          onClick={clickHandler}
+          style={{ cursor: "pointer" }}
+        >
           <i class="fas fa-edit"></i>
         </a>
-        <a  className="mr">
-          {/* <i onClick={clickHandler} id="delete" class="la la-print"></i> */}
-          <i class="fas fa-trash" aria-hidden="true"></i>
+        <a className="mr" style={{ cursor: "pointer" }}>
+          <i
+            class="fas fa-trash"
+            onClick={clickHandler}
+            id="delete"
+            aria-hidden="true"
+          ></i>
         </a>
       </div>
     ),

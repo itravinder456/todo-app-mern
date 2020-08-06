@@ -3,87 +3,99 @@ import { customStyles } from "./CustomCssForDataTable";
 import DataTable, { createTheme } from "react-data-table-component";
 const data=[
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"QSWFC",
+    todoDescription:"BBGsgr",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-07-05 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"asdaqefef",
+    todoDescription:"TTGgerg",
+    createdUserId:"Harsha",
+    createdDate:"2020-05-10 00:00:00:00",
+    todoStatus:"Open"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"fehrgd",
+    todoDescription:"GECEG",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-02-12 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"Wcgertg",
+    todoDescription:"CFGgherg",
+    createdUserId:"Harsha",
+    createdDate:"2020-08-14 00:00:00:00",
+    todoStatus:"Open"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"htbstrhthhsre",
+    todoDescription:"ihsgtrh",
+    createdUserId:"Harsha",
+    createdDate:"2020-08-07 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"mgjesgrg",
+    todoDescription:"ysfdhtrh",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-08-25 00:00:00:00",
+    todoStatus:"Open"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"vaergg",
+    todoDescription:"fgehfdgreg",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-08-22 00:00:00:00",
+    todoStatus:"Open"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"vdgsergg",
+    todoDescription:"rgfgesrghth",
+    createdUserId:"Harsha",
+    createdDate:"2020-08-14 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"aegrgef",
+    todoDescription:"wefwgasherhg",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-08-31 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
+    todoTitle:"wefefdsaewrgf",
+    todoDescription:"ggwgerfwe",
     createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    createdDate:"2020-08-28 00:00:00:00",
+    todoStatus:"Completed"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"sdfwefdsgweg",
+    todoDescription:"ehg32wedsfweg",
+    createdUserId:"Harsha",
+    createdDate:"2020-08-17 00:00:00:00",
+    todoStatus:"Open"
   }
   ,
   {
-    todoTitle:"todoTitle1",
-    todoDescription:"todoDescription1",
-    createdUserId:"Ravinder",
-    createdDate:"2020-08-10 00:00:00:00"
+    todoTitle:"GErger",
+    todoDescription:"agfewegergfg",
+    createdUserId:"Harsha",
+    createdDate:"2020-08-14 00:00:00:00",
+    todoStatus:"Open"
   }
 ]
 const TodoDataTable = (props) => {
