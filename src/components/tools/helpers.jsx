@@ -1,14 +1,18 @@
 import axios from "axios";import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
-export const restApiCall=async(url,method)=>{
-    const config = {
-        url: url,
-        method: method
+export const restApiCall=async(url,method,reqObject)=>{
+  let responseData
+ 
+     const config = {
+      method: 'post',
+      url: url,
+      data: reqObject
+       
       };
-     let responseData= await axios(config)
+     await axios(config)
         .then(result => {
-          return result
+          responseData= result.data
         })
         .catch(error => {
           if (error == "Network Error") {
@@ -16,6 +20,8 @@ export const restApiCall=async(url,method)=>{
           }
         });
     
+  
+   console.log("kansjkdasjkdns",responseData);
     return responseData
 }
 

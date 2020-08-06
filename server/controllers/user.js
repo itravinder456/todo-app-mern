@@ -5,9 +5,8 @@ const getNextSequenceValue = require("../models/counter")
 const Session = require("../models/session")
 const helpers = require("../helpers/helperFunctions");
 const UserRoles = require("../models/userRoles")
-
+require('dotenv').config()
 const User = require("../models/user");
-
 exports.user_signup = (req, res, next) => {
   User.find({ email: req.body.email })
     .exec()
@@ -86,7 +85,7 @@ exports.user_login = (req, res, next) => {
               userId: user[0].userId,
               password: user[0].hashedPassword,
             },
-            process.env.JWT_KEY,
+            "secretsrc",
             {
               expiresIn: "1h"
             }

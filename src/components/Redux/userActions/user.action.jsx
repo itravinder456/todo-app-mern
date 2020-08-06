@@ -26,9 +26,19 @@ import { useHistory } from "react-router-dom";
 //   };
 // }
   const  loginUserRequest=(payload)=> {
-    return dispatch=>{
-     window.location.href="/userHome"
-      dispatch(loginPayload(payload));
+    return async dispatch=>{
+      console.log("asdnjakdnjndkdnsjakd",payload);
+      let resp=await restApiCall("http://localhost:5000/user/login","post",payload)
+      console.log("mclasclascamlcmas",resp);
+      if (resp) {
+         if (resp.token !=="") {
+        localStorage.setItem("token",resp.token)
+        dispatch(loginPayload(resp.user));
+       
+      }
+      }
+     
+      
     }
   }
   export default loginUserRequest

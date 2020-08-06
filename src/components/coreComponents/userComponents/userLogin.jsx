@@ -8,8 +8,8 @@ import {Link} from 'react-router-dom'
       const [user,setUser]=useReducer(
         (state, newState) => ({...state, ...newState}),
         {
-            email: '',
-            password: ''
+            "password": "",
+            "userName": ""
         }
       );
       let dispatch=useDispatch()
@@ -19,7 +19,7 @@ import {Link} from 'react-router-dom'
         }
         const handleSubmit=(e)=>{
             e.preventDefault();
-            if (user.email  !=="" && user.password !=="" ) {
+            if (user.password  !=="" && user.userName !=="" ) {
                 dispatch(loginUserRequest(user))
             }
         }
@@ -33,7 +33,7 @@ import {Link} from 'react-router-dom'
                                 <div className="card-header"><h3 className="text-center font-weight-light my-4">Login</h3></div>
                                 <div className="card-body">
                                     <form>
-                                        <div className="form-group"><label className="small mb-1" htmlFor="inputEmailAddress">Email</label><input onChange={(e)=>handleUser(e,"email")} className="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" /></div>
+                                        <div className="form-group"><label className="small mb-1" htmlFor="inputEmailAddress">Email</label><input onChange={(e)=>handleUser(e,"userName")} className="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" /></div>
                                         <div className="form-group"><label className="small mb-1" htmlFor="inputPassword">Password</label><input onChange={(e)=>handleUser(e,"password")}  className="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" /></div>
                                         <div className="form-group">
                                             <div className="custom-control custom-checkbox"><input className="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label className="custom-control-label" htmlFor="rememberPasswordCheck">Remember password</label></div>

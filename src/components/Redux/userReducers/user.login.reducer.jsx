@@ -7,10 +7,16 @@ const initial_state = {
 const userLoginReducer = (state = initial_state, action) => {
     switch (action.type) {
         case userConstants.user_Login:
-            return {
-                ...state,
-                loginedUser: action.payload
-            }
+            
+                if (action.payload) {
+                    window.location.href="/userHome"
+                      return {
+                    ...state,
+                    loginedUser: action.payload
+                }
+                }
+              
+            
         default:
             return {
                 state

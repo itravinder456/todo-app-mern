@@ -7,12 +7,8 @@ import 'semantic-ui-css/semantic.min.css'
 const UserContent=()=>{
 return(
     <>
-    
     <div className="MainContentWrapper page-wrapper default-theme sidebar-bg bg1 ">
-         
          {/* page-content  */}
-
-
          <SideBar/>
            <div className="sectionContent  mbP5 ">
              <NavBar/>
@@ -24,7 +20,7 @@ return(
             <Header className="tableHeader  mt20" as='h3' block>
              My Todo's
            </Header>
-            <Table   >
+            <Table>
               <Table.Header fullWidth>
 
                 <Table.Row>
@@ -56,7 +52,6 @@ return(
                       <Menu.Item as="a" icon>
                         <Icon name="chevron left" />
                       </Menu.Item>
-
                       <Pagination
                         activePage={1}
                         // onPageChange={this.handlePaginationChange}
@@ -70,9 +65,7 @@ return(
                 </Table.Row>
               </Table.Footer>
             </Table>
-
-
-          </div>
+                  </div>
 
                  </div>
                 </div>
