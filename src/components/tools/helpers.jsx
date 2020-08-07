@@ -1,4 +1,6 @@
 import axios from "axios";import { createBrowserHistory } from 'history';
+import { decryptData, encryptData } from "./EncryptDecrypt";
+import config from "./config";
 
 export const history = createBrowserHistory();
 export const restApiCall=async(url,method,reqObject)=>{
@@ -24,6 +26,116 @@ export const restApiCall=async(url,method,reqObject)=>{
    console.log("kansjkdasjkdns",responseData);
     return responseData
 }
+
+
+
+/**
+ * @desciption
+ * To check user athentication status for protected routes
+ */
+export function checkSession() {
+  let user = getCacheObject(config.SESSION_KEY_NAME);
+  if (user) {
+    return true;
+  } else {
+    return false;
+  }
+}
+/**
+ * @description
+ * to remove currest user session
+ */
+export function removeSession() {
+  // localStorage.removeItem(SESSION_KEY_NAME);
+  localStorage.clear();
+}
+
+/**
+ * @set cache object
+ */
+export function setCacheObject(key_name, value) {
+  localStorage.setItem(key_name, encryptData(value));
+  return true;
+}
+
+/**
+ * @get cache object
+ */
+export function getCacheObject(key_name) {
+  let data = localStorage.getItem(key_name);
+  data = data ? decryptData(data) : null;
+  return data;
+}
+/**
+ * @description to get distinct values from array
+ * @array
+ * @property_name
+ */
+export function getDistinctValuesFromArray(array, property_name) {
+  return [...new Set(array.map((object) => object[property_name]))];
+}
+
+/**
+ * To filter the Objects based on unique id
+ * array = array of object
+ * comparingProperty = Specific KEY from the array
+ * value = Specific value from thje specific KEY
+ */
+export function getFilteredObjects(array, comparingProperty, value) {
+  let results = array.filter((object) => {
+    return object[comparingProperty] == value;
+  });
+  return results;
+}
+/**
+ *
+ * @param {to make capitalize the First Letter from the string} string
+ */
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
+ *  Global Search is useful to search string and numbers over all ARRAY of OBJECTS
+ *  search string is not null
+ */
+export function globalSearch(data, searchString = "") {
+  if (searchString != "" && data.length > 0) {
+    let filtered = data.filter((entry) =>
+      Object.values(entry).some(
+        (val) =>
+          (typeof val !== "string" && val !== null
+            ? (val = val.toString())
+            : val) && val.toLowerCase().includes(searchString.toLowerCase())
+      )
+    );
+    return filtered;
+  }
+  return data;
+}
+
+/**
+ * To move scroll position to top at any time
+ */
+export function scrollTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+/**
+ * 
+ * @param {the array of value tobe checked for duplicates} array 
+ */
+export function checkDuplicateValuesFromArray(array) {
+  let duplicates = array.filter((e, i, a) => a.indexOf(e) !== i); // return duplicates
+  let unique = array.filter((e, i, a) => a.indexOf(e) === i); // [1, 2, 3, 4]
+  let resultArray = {};
+  resultArray.unique = unique;
+  resultArray.duplicates = duplicates;
+  return resultArray;
+}
+
 
 // export const toggleTheme=()=>{
 //         let iTypeTheme = document.getElementById("iTypeTheme");
