@@ -32,13 +32,7 @@ export const columns = memoize((clickHandler) => [
     // right: true,
     // width: "15%",
   },
-  {
-    name: "Created By",
-    selector: "createdUserId",
-    sortable: true,
-    // width: "16.9%",
-    // right: true,
-  },
+
   {
     name: "Date Added",
     selector: "createdDate",

@@ -1,20 +1,22 @@
-.navbar-icon-top .navbar-nav .nav-link > .fa {
+.navbar-icon-top .navbar-nav .nav-link>.fa {
   position: relative;
   width: 36px;
   font-size: 24px;
 }
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
 }
-.navbar-icon-top .navbar-nav .nav-link > .fa {
+
+.navbar-icon-top .navbar-nav .nav-link>.fa {
   top: 3px;
   line-height: 12px;
 }
 
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
   top: -10px;
 }
 
@@ -28,7 +30,7 @@
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -36,7 +38,7 @@
     /* line-height: 24px; */
   }
 
-  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
@@ -51,7 +53,7 @@
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -59,7 +61,7 @@
     /* line-height: 24px; */
   }
 
-  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
@@ -74,7 +76,7 @@
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -82,7 +84,7 @@
     /* line-height: 24px; */
   }
 
-  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
@@ -97,7 +99,7 @@
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -105,39 +107,44 @@
     line-height: 24px;
   }
 
-  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
 
-.navbarNew{
+.navbarNew {
   margin-left: -30px !important;
   margin-right: 21px !important;
 }
-.mtn8{
+
+.mtn8 {
 
   margin-top: -8px !important;
 }
-.mainWrapper{
+
+.mainWrapper {
   box-shadow: 0px 0px 7px 0px !important;
 }
 
-.nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
+.nav-icon1,
+#nav-icon2,
+#nav-icon3,
+#nav-icon4 {
   width: 34px;
-    height: 6px;
-    position: relative;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    cursor: pointer;
+  height: 6px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
 }
 
-.nav-icon1 span{
+.nav-icon1 span {
   display: block;
   position: absolute;
   height: 4px;
@@ -189,120 +196,150 @@
   transform: rotate(-135deg);
 }
 
-.cursor-Pointer{
+.cursor-Pointer {
   cursor: pointer !important;
 }
-.MenuPointer{
+
+.MenuPointer {
   height: 35px;
   width: 40px;
   margin-left: -14px;
 }
-.container-fluid{
+
+.container-fluid {
   width: 100%;
-    padding-right: 11px !important;
-    padding-left: 11px !important;
-    margin-right: auto;
-    margin-left: auto;
+  padding-right: 11px !important;
+  padding-left: 11px !important;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.toggleMenuBar{
+.toggleMenuBar {
   margin-top: -29px;
   margin-left: -10px;
   margin-right: 10px;
   color: #fff !important;
   background-color: #343a40 !important;
-  border-color: #343a40!important;
-  
+  border-color: #343a40 !important;
+
 }
-.align-items-center{
+
+.align-items-center {
   align-items: center;
 }
-.fs-14{
+
+.fs-14 {
   font-size: 14px;
 }
-.fs-18{
+
+.fs-18 {
   font-size: 18px !important;
 }
-.width100{
+
+.width100 {
   width: 100%;
 }
-.width50{
+
+.width50 {
   width: 50%;
 }
-.width40{
+
+.width40 {
   width: 40%;
 }
-.width30{
+
+.width30 {
   width: 30%;
 }
-.width20{
+
+.width20 {
   width: 20%;
 }
-.width10{
+
+.width10 {
   width: 10%;
 }
-.width5{
+
+.width5 {
   width: 5%;
 }
-.searchInp{
+
+.searchInp {
   height: 33px;
 }
-.headTitle{
+
+.headTitle {
   font-size: 20px;
-    color: white;
-    font-weight: 500;
-    margin-left: 10px;
-    margin-right: 10px;
+  color: white;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.navbarFixed{
+
+.navbarFixed {
   position: sticky;
   top: 0;
   z-index: 1020;
 }
-.MainContentWrapper{
+
+.MainContentWrapper {
   padding-left: 1%;
   padding-right: 1%;
 }
-.sectionContent{
+
+.sectionContent {
   box-shadow: 0px 1px 7px 2px #060606;
 }
-.content{
+
+.content {
   padding-left: 1%;
   padding-right: 1%;
 }
-.sidebar{
+
+.sidebar {
   margin-top: 4% !important;
-    height: 92% !important;
-    margin-left: 1% !important;
+  height: 92% !important;
+  margin-left: 1% !important;
 }
-.mlp75{
+
+.mlp75 {
   margin-left: 75%;
 }
-.pullRight{
+
+.pullRight {
   justify-content: flex-end;
 }
-.mbP5{
+
+.mbP5 {
   margin-bottom: 5%;
 }
-.tableHeader{
- 
+
+.tableHeader {
+
   margin-bottom: -18px !important;
 }
-.mt20{
+
+.mt20 {
   margin-top: 20px !important;
 }
+
 /* --------------------Landing page start------------------------------------------- */
-.welomePage{
-background: url('../img/welcome-bg.jpg');
-background-size: cover;
-    height: 100vh;
-    width: 100%;
+.welomePage {
+  background: url('../img/welcome-bg.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
 }
 
 /* ***************************Custom styles */
-.flex{
+.flex {
   display: flex;
 }
-.pad10{
+
+.pad10 {
   padding: 10px;
+}
+
+.invalid-field {
+  border-color: red;
 }

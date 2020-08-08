@@ -57,8 +57,8 @@ const UserTodoModal = (props) => {
       validationFields.todoStatus = "";
     }
     let validateFormResults = validateForm(state, validationFields);
+    setErrors(validateFormResults.errors);
     if (!validateFormResults.formIsValid) {
-      setErrors(validateFormResults.errors);
       return false;
     }
     let user = {

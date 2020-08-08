@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { removeSession } from "../../tools/helpers";
+import { removeSession, getCacheObject } from "../../tools/helpers";
 import { useSelector } from "react-redux";
 import { getSocketIOInstance } from "../SocketIO";
+import config from "../../tools/config";
 
 const SideBar = (props) => {
-  const userObject = useSelector((state) => state.user);
-  console.log("userObject", userObject);
+  const user = getCacheObject(config.SESSION_KEY_NAME);
+  console.log("userObject", user);
 
   useEffect(() => {
     let socket = getSocketIOInstance("sidebar");
@@ -29,10 +30,10 @@ const SideBar = (props) => {
             </div>
             <div className="user-info">
               <span className="user-name">
-                Jhon
-                <strong>Smith</strong>
+                {user.firstName}
+                <strong> {user.lastName}</strong>
               </span>
-              <span className="user-role">Administrator</span>
+              <span className="user-role">{user.userRole[0].userRoleType==1 ? "Administrator": "Staff"}</span>
               <span className="user-status">
                 <i className="fa fa-circle" />
                 <span>Online</span>
