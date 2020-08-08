@@ -17,6 +17,18 @@ import UserTodoModal from "./userTodoModal/UserTodoModal";
 
 const UserContent = () => {
   const [addTodo, setAddTodo] = useState(false);
+  const [updateTodoObject, setupdateTodoObject] = useState({});
+  const [updateTodo, setUpdateTodo] = useState(false);
+
+  const handleActionsFromDataTable = (e, row) => {
+    const id = e.target.id;
+    if (id == "edit") {
+      setAddTodo(true);
+      setupdateTodoObject(row);
+      setUpdateTodo(true);
+    }
+  };
+
   return (
     <>
       <div className="MainContentWrapper page-wrapper default-theme sidebar-bg bg1 ">
@@ -27,7 +39,13 @@ const UserContent = () => {
           <NavBar />
 
           <div className="content mt-10">
-            <UserTodoModal open={addTodo} />
+            <UserTodoModal
+              updateTodoObject={updateTodoObject}
+              onClose={() => setAddTodo(false)}
+              updateTodo={updateTodo}
+              setUpdateTodo={(e) => setUpdateTodo(e)}
+              open={addTodo}
+            />
             <div className="row ">
               <div className="form-group col-md-12 mt-3">
                 <Segment.Group>
@@ -49,24 +67,12 @@ const UserContent = () => {
                   </Segment>
                   <Segment>
                     <TodoDataTable
-                      columns={columns(() => {
-                        "";
-                      })}
+                      columns={columns(handleActionsFromDataTable)}
                     />
                   </Segment>
-                  <Segment>Bottom</Segment>
+                 
                 </Segment.Group>
-                {/* <div className="mytable">
-                  <Header className="tableHeader  mt20" as="h3" block>
-                    My Todo's
-                  </Header>
-                  <div className="clearfix mt-3"></div>
-                  <TodoDataTable
-                    columns={columns(() => {
-                      "";
-                    })}
-                  />
-                </div> */}
+                
               </div>
             </div>
           </div>

@@ -1,33 +1,30 @@
-import axios from "axios";import { createBrowserHistory } from 'history';
+import axios from "axios";
+import { createBrowserHistory } from "history";
 import { decryptData, encryptData } from "./EncryptDecrypt";
 import config from "./config";
 
 export const history = createBrowserHistory();
-export const restApiCall=async(url,method,reqObject)=>{
-  let responseData
- 
-     const config = {
-      method: 'post',
-      url: url,
-      data: reqObject
-       
-      };
-     await axios(config)
-        .then(result => {
-          responseData= result.data
-        })
-        .catch(error => {
-          if (error == "Network Error") {
-          } else {
-          }
-        });
-    
-  
-   console.log("kansjkdasjkdns",responseData);
-    return responseData
-}
+export const restApiCall = async (url, method, reqObject) => {
+  let responseData;
 
+  const config = {
+    method: "post",
+    url: url,
+    data: reqObject,
+  };
+  await axios(config)
+    .then((result) => {
+      responseData = result.data;
+    })
+    .catch((error) => {
+      if (error == "Network Error") {
+      } else {
+      }
+    });
 
+  console.log("kansjkdasjkdns", responseData);
+  return responseData;
+};
 
 /**
  * @desciption
@@ -124,8 +121,8 @@ export function scrollTop() {
   });
 }
 /**
- * 
- * @param {the array of value tobe checked for duplicates} array 
+ *
+ * @param {the array of value tobe checked for duplicates} array
  */
 export function checkDuplicateValuesFromArray(array) {
   let duplicates = array.filter((e, i, a) => a.indexOf(e) !== i); // return duplicates
@@ -136,6 +133,23 @@ export function checkDuplicateValuesFromArray(array) {
   return resultArray;
 }
 
+/**
+ * @param validationFileds{the fields to be validated} object
+ * @param validationState{the state that validation should be performed on} object
+ */
+export function validateForm(validationState, validationFileds) {
+  let formIsValid = true;
+  let errors = {};
+  for (var name in validationFileds) {
+    if (!validationState[name]) {
+      formIsValid = false;
+      errors[name] = "This field i required";
+    } else {
+      errors[name] = "";
+    }
+  }
+  return { formIsValid, errors };
+}
 
 // export const toggleTheme=()=>{
 //         let iTypeTheme = document.getElementById("iTypeTheme");
@@ -143,7 +157,7 @@ export function checkDuplicateValuesFromArray(array) {
 //           iTypeTheme.href = "darkTheme.css";
 //         } else {
 //           iTypeTheme.href = "lightTheme.css";
-//         }  
+//         }
 // }
 
 // <div className="page-wrapper default-theme sidebar-bg bg1 ">
@@ -464,12 +478,10 @@ export function checkDuplicateValuesFromArray(array) {
 // <main className="page-content pt-2">
 //   <div id="overlay" className="overlay" />
 
-
 //   <div className="container-fluid mtn8">
 //     <div className="col-md-12 mainWrapper">
 //       <div className="navbarFixed col-md-12">
 //         <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark navbarNew">
-
 
 //         <div id="toggle-sidebar" className="cursor-Pointer toggleMenuBar btn btn-secondary rounded-0 nav-icon1" >
 //           <div className="MenuPointer">
@@ -552,7 +564,7 @@ export function checkDuplicateValuesFromArray(array) {
 //       </nav>
 
 //       </div>
-    
+
 //       <div className="row">
 //         <div className="form-group col-md-12">
 //           <h2>Pro Sidebar</h2>
