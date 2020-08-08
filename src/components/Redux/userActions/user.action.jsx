@@ -28,24 +28,28 @@ import config from "../../tools/config";
 // }
 const loginUserRequest = (payload) => {
   return async (dispatch) => {
-    console.log("asdnjakdnjndkdnsjakd", payload);
     let resp = await postServiceCALLS("/user/login",payload)
-    console.log("mclasclascamlcmas", resp);
+    console.log("asdnjakdnjndkdnsjakd", resp);
     if (resp) {
-      if (resp.token !== "") {
+      if (resp.token !=="fail") {
         localStorage.setItem("token", resp.token);
         setCacheObject(config.SESSION_KEY_NAME,resp.user);
         // localStorage.setItem(
-        //   config.SESSION_KEY_NAME,
-        //   JSON.stringify(resp.user)
-        // );
-        dispatch(loginPayload(resp.user));
+          //   config.SESSION_KEY_NAME,
+          //   JSON.stringify(resp.user)
+          // );
+          dispatch(loginPayload(resp.user.token));
+        }
+        else{
+          dispatch(loginPayload(resp));  
+        }
       }
-    }
+
   };
 };
 export default loginUserRequest;
 export function loginPayload(payload) {
+  console.log("ckaskcjskcbsc",payload)
   return {
     type: userConstants.user_Login,
     payload,

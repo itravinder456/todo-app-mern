@@ -69,13 +69,15 @@ exports.user_login = (req, res, next) => {
     .then(user => {
       if (user.length < 1) {
         return res.status(200).json({
-          message: "Invalid username/password."
+          message: "Invalid username/password.",
+          token:"fail"
         });
       }
       bcrypt.compare(req.body.password, user[0].hashedPassword, (err, result) => {
         if (err) {
           return res.status(200).json({
-            message: "Invalid username/password.."
+            message: "Invalid username/password..",
+            token:"fail"
           });
         }
         if (result) {
@@ -122,9 +124,9 @@ exports.user_login = (req, res, next) => {
             });
 
         }
-        res.status(200).json({
-          message: "Invalid username/password..."
-        });
+        // res.status(200).json({
+        //   message: "Invalid username/password..."
+        // });
       });
     })
     .catch(err => {

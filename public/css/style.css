@@ -303,3 +303,6 @@ background-size: cover;
 .flex{
   display: flex;
 }
+.pad10{
+  padding: 10px;
+}
