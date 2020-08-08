@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import NavBar from "../navs/navBar";
 import SideBar from "../navs/sideBar";
-import {
-  Table,
-  Header,
-  Menu,
-  Icon,
-  Pagination,
-  Button,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import TodoDataTable from "../plugins/TodoDataTable";
 import { columns } from "../plugins/DataTableColumnConfiguration";
 import UserTodoModal from "./userTodoModal/UserTodoModal";
+import { toastMessage } from "../../tools/Toaster";
 
 const UserContent = () => {
   const [addTodo, setAddTodo] = useState(false);
@@ -26,6 +19,10 @@ const UserContent = () => {
       setAddTodo(true);
       setupdateTodoObject(row);
       setUpdateTodo(true);
+    }
+    if (id == "delete") {
+      //perform delete operation by passing _id #{row._id}
+      toastMessage(`Todo was deleted successfully`, "success");
     }
   };
 
@@ -70,9 +67,7 @@ const UserContent = () => {
                       columns={columns(handleActionsFromDataTable)}
                     />
                   </Segment>
-                 
                 </Segment.Group>
-                
               </div>
             </div>
           </div>

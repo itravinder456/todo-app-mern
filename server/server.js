@@ -13,7 +13,7 @@ const io = socketio(server);
 
 let users = [];
 io.on('connect', (socket) => {
-    console.log("socket io is started..")
+    console.log("socket io is started..", socket.id)
     socket.on('todoCreated', (user, callback) => {
         console.log("user1", user.user, "action", user.action, "--", user.admin)
         user.socketId = socket.id;
@@ -26,7 +26,7 @@ io.on('connect', (socket) => {
     });
 
     socket.on('disconnect', () => {
-
+        console.log("socketIO disconnected.", socket.id)
     })
 });
 

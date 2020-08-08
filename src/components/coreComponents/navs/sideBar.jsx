@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { removeSession } from "../../tools/helpers";
 import { useSelector } from "react-redux";
+import { getSocketIOInstance } from "../SocketIO";
 
 const SideBar = (props) => {
   const userObject = useSelector((state) => state.user);
   console.log("userObject", userObject);
- 
+
+  useEffect(() => {
+    let socket = getSocketIOInstance("sidebar");
+  }, []);
+
   return (
     <>
       <nav id="sidebar" className="sidebar-wrapper">

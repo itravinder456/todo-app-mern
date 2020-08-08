@@ -5,6 +5,8 @@ import Input from "./Input";
 import TextArea from "./TextArea";
 import Dropdown from "./Dropdown";
 import { validateForm } from "../../../tools/helpers";
+import { getSocketIOInstance } from "../../SocketIO";
+import { toastMessage } from "../../../tools/Toaster";
 
 const statusOptions = [
   { key: "1", value: 1, icon: "circle", text: "Active" },
@@ -16,6 +18,8 @@ const priorityOptions = [
   { key: "2", value: 2, icon: "adjust", text: "Medium" },
   { key: "3", value: 3, icon: "circle outline", text: "Low" },
 ];
+
+var socket;
 
 const UserTodoModal = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -53,10 +57,21 @@ const UserTodoModal = (props) => {
       validationFields.todoStatus = "";
     }
     let validateFormResults = validateForm(state, validationFields);
-    if (validateFormResults.formIsValid) {
-      props.onClose();
+    if (!validateFormResults.formIsValid) {
+      setErrors(validateFormResults.errors);
+      return false;
     }
-    setErrors(validateFormResults.errors);
+    let user = {
+      user: state.todoTitle,
+      action: "Todo was created",
+      room: "testRoom",
+    };
+    socket.emit("todoCreated", user, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
+    props.onClose();
   };
 
   const clearFields = () => {
@@ -65,6 +80,13 @@ const UserTodoModal = (props) => {
     setState({});
     props.setUpdateTodo(false);
   };
+
+  useEffect(() => {
+    socket = getSocketIOInstance("userContent");
+    socket.on("todoCreated", (message) => {
+      toastMessage(`Todo was created by ${message.user}`, "info");
+    });
+  }, []);
 
   console.log("satte", state);
   return (
