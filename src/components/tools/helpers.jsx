@@ -3,6 +3,10 @@ import { createBrowserHistory } from "history";
 import { decryptData, encryptData } from "./EncryptDecrypt";
 import config from "./config";
 
+const hostName = config.BASE_URL;
+const SESSION_KEY_NAME = config.SESSION_KEY_NAME;
+let headers = {};
+
 export const history = createBrowserHistory();
 export const restApiCall = async (url, method, reqObject) => {
   let responseData;
@@ -25,6 +29,74 @@ export const restApiCall = async (url, method, reqObject) => {
   console.log("kansjkdasjkdns", responseData);
   return responseData;
 };
+
+// Get all getbased service calls.
+export async function getServiceCALLS(serviceURI, dataObject = {}) {
+  // Session validation
+  const user = getCacheObject(config.SESSION_KEY_NAME);
+
+  if (user) {
+    headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${user.token}`,
+      userId: user.userId,
+    };
+  }
+
+  const prepareURL = hostName + serviceURI;
+  var tempResponseObject = {};
+  tempResponseObject = await axios({
+    method: "GET",
+    url: prepareURL,
+    headers: headers,
+    params: {
+      format: "json",
+    },
+  }).then((response) => {
+    console.log("API Response Object (Get Service Call)=", response.data);
+    return response.data;
+  });
+  return tempResponseObject;
+}
+
+// Get all post based service calls.
+export async function postServiceCALLS(serviceURI, dataObject = {}) {
+  // Session validation
+  const user = getCacheObject(SESSION_KEY_NAME);
+
+  if (serviceURI != "/user/login" || serviceURI != "/register") {
+    if (user) {
+      headers = {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${user.token}`,
+        userId: user.userId,
+      };
+    }
+  }
+  const prepareURL = hostName + serviceURI;
+  var tempResponseObject = {};
+  console.log(
+    "prepareURL =",
+    prepareURL,
+    "headers=",
+    headers,
+    "dataObject=",
+    dataObject
+  );
+  tempResponseObject = await axios
+    .post(prepareURL, dataObject, {
+      headers: headers,
+    })
+    .then((response) => {
+      console.log("API Response Object (Post Service Call)=", response.data);
+
+      var responsedata = response.data;
+
+      return response.data;
+    });
+
+  return tempResponseObject;
+}
 
 /**
  * @desciption

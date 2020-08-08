@@ -1,4 +1,4 @@
-import { restApiCall, getCacheObject, setCacheObject } from "../../tools/helpers";
+import { restApiCall, getCacheObject, setCacheObject, postServiceCALLS } from "../../tools/helpers";
 import userConstants from "../userConstants/userConstants";
 import { createBrowserHistory } from "history";
 import { useHistory } from "react-router-dom";
@@ -29,11 +29,7 @@ import config from "../../tools/config";
 const loginUserRequest = (payload) => {
   return async (dispatch) => {
     console.log("asdnjakdnjndkdnsjakd", payload);
-    let resp = await restApiCall(
-      "http://localhost:5000/user/login",
-      "post",
-      payload
-    );
+    let resp = await postServiceCALLS("/user/login",payload)
     console.log("mclasclascamlcmas", resp);
     if (resp) {
       if (resp.token !== "") {
