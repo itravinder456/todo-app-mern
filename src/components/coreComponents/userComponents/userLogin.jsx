@@ -27,7 +27,7 @@ const UserLogin = () => {
   };
 
   if (checkSession()) {
-    return <Redirect to="userHome" />;
+    return <Redirect to="/dashboard" />;
   }
   return (
     <div>

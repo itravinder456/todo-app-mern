@@ -5,6 +5,7 @@ import ForgotPassword from "../coreComponents/ForgotPassword";
 import UserContent from "../coreComponents/userComponents/userContent";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import AdminDashboard from "../coreComponents/adminCompos/AdminDashboard";
 
 const Routes = () => {
   return (
@@ -20,7 +21,8 @@ const Routes = () => {
         {/* The below all are protected routes */}
         {/* @all routes should be handled within this section */}
         {/* ************************START******************************* */}
-        <ProtectedRoute exact path="/userHome" component={UserContent} />
+        <ProtectedRoute exact path="/dashboard" component={UserContent} />
+        <ProtectedRoute exact path="/view-users-todos" component={AdminDashboard} />
         {/* END */}
       </Switch>
     </>

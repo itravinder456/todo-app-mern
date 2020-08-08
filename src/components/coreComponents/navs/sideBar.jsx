@@ -60,6 +60,27 @@ const SideBar = (props) => {
               <li className="header-menu">
                 <span>General</span>
               </li>
+              <li>
+                <Link to="/view-users-todos">
+                  <i className="fa fa-book" />
+                  <span className="menu-text">Users Todos</span>
+                  <span className="badge badge-pill badge-primary">new</span>
+                </Link>
+              </li>
+              {/* <li>
+                <a href="#">
+                  <i className="fa fa-calendar" />
+                  <span className="menu-text">Calendar</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fa fa-folder" />
+                  <span className="menu-text">Examples</span>
+                </a>
+              </li> */}
+              {/*             
+
               <li className="sidebar-dropdown">
                 <a href="#">
                   <i className="fa fa-tachometer-alt" />
@@ -190,6 +211,7 @@ const SideBar = (props) => {
                   <span className="menu-text">Examples</span>
                 </a>
               </li>
+             */}
             </ul>
           </div>
         </div>

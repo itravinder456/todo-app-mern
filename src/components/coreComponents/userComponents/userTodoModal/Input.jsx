@@ -9,6 +9,8 @@ const Input = (props) => (
     placeholder={props.placeholder}
     onChange={props.onChange}
     value={props.value}
+    loading={props.loading}
+    icon={props.icon ? "search" : ""}
   />
 );
 

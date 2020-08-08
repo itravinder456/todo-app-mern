@@ -7,6 +7,7 @@ import TodoDataTable from "../plugins/TodoDataTable";
 import { columns } from "../plugins/DataTableColumnConfiguration";
 import UserTodoModal from "./userTodoModal/UserTodoModal";
 import { toastMessage } from "../../tools/Toaster";
+import Input from "./userTodoModal/Input";
 
 const UserContent = () => {
   const [addTodo, setAddTodo] = useState(false);
@@ -48,10 +49,20 @@ const UserContent = () => {
                 <Segment.Group>
                   <Segment>
                     <div className="flex" style={{ display: "flex" }}>
-                      <div className="">
+                      <div className="mt-1">
                         <h3>My Todo's</h3>
                       </div>
-
+                      <div
+                        className="pull-right col-md-3"
+                        // style={{ "margin-inline-start": "auto" }}
+                      >
+                        <div className="flex">
+                          {/* <h5 className="mt-2">Search:</h5> */}
+                          <div className="col-md-12">
+                            <Input placeholder="search" icon={true} loading={false} />
+                          </div>
+                        </div>
+                      </div>
                       <div
                         className="pull-right"
                         style={{ "margin-inline-start": "auto" }}

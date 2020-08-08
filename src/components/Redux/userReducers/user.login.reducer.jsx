@@ -9,7 +9,7 @@ const userLoginReducer = (state = initial_state, action) => {
         case userConstants.user_Login:
             
                 if (action.payload) {
-                    window.location.href="/userHome"
+                    window.location.href="/dashboard"
                       return {
                     ...state,
                     loginedUser: action.payload
