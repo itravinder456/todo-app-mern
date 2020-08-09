@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { columns } from "./plugins/DataTableColumnConfiguration";
 import Navbar from "../navs/navBar";
 import SideBar from "../navs/sideBar";
@@ -6,13 +6,8 @@ import { Button, Segment } from "semantic-ui-react";
 import AdminTodoDataTable from "./plugins/AdminTodoDataTable";
 import Input from "../userComponents/userTodoModal/Input";
 
-export const AdminDashboard = (toData) => {
-
-
-// let const dispatch = useDispatch()
-
-
-
+export const AdminDashboard = () => {
+  const [searchString, setSearchString] = useState("");
 
   return (
     <>
@@ -41,14 +36,21 @@ export const AdminDashboard = (toData) => {
                         <div className="flex">
                           <h5 className="mt-2">Search:</h5>
                           <div className="col-md-12">
-                            <Input icon={true} loading={false} />
+                            <Input
+                              onChange={(e) => setSearchString(e.target.value)}
+                              icon={true}
+                              loading={false}
+                            />
                           </div>
                         </div>
                       </div>
                     </div>
                   </Segment>
                   <Segment>
-                    <AdminTodoDataTable columns={columns} />
+                    <AdminTodoDataTable
+                      searchString={searchString}
+                      columns={columns}
+                    />
                   </Segment>
                 </Segment.Group>
               </div>

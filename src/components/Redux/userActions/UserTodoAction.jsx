@@ -16,3 +16,10 @@ export function userTodosPayLoad(payload) {
     payload,
   };
 }
+
+export function broadCastUpdates(payload) {
+  return {
+    type: userConstants.broadCastUpdates,
+    payload,
+  };
+}

@@ -58,9 +58,6 @@ const UserTodoModal = (props) => {
       todoTitle: "",
       todoPriority: "",
     };
-    // if (props.updateTodo) {
-    //   validationFields.todoStatus = "";
-    // }
     let validateFormResults = validateForm(state, validationFields);
     setErrors(validateFormResults.errors);
     if (!validateFormResults.formIsValid) {

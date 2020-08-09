@@ -142,7 +142,6 @@ const UserContent = ({ userTodos }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("cjkasckscnasns", state);
   return { userTodos: state.userTodos.userTodos };
 };
 

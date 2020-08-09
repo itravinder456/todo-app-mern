@@ -2,6 +2,7 @@ const { default: userConstants } = require("../userConstants/userConstants");
 
 const initial_state = {
   userTodos: "",
+  broadCastUpdates: false,
 };
 
 const UserTodoReducer = (state = initial_state, action) => {
@@ -13,6 +14,12 @@ const UserTodoReducer = (state = initial_state, action) => {
           userTodos: action.payload,
         };
       }
+
+    case userConstants.broadCastUpdates:
+      return {
+        ...state,
+        broadCastUpdates: action.payload,
+      };
 
     default:
       return {

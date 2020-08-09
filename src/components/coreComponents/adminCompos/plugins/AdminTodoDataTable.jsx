@@ -1,24 +1,36 @@
 import DataTable, { createTheme } from "react-data-table-component";
-import { customStyles } from "../../plugins/CustomCssForDataTable";/// ikada inputs lev ga antuna?lev
-import React,{useEffect} from 'react'
+import { customStyles } from "../../plugins/CustomCssForDataTable"; /// ikada inputs lev ga antuna?lev
+import React, { useEffect } from "react";
 import adminTodos from "../../../Redux/adminActions/admin.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
+import { useState } from "react";
+import { globalSearch } from "../../../tools/helpers";
+
 const AdminTodoDataTable = (props) => {
-  console.log("caslclascsmmcasm",props)
-  let  data = [];
-  const dispatch = useDispatch()
-  if (props.adminTodos) {
-    data=props.adminTodos
-  }
- 
-  useEffect(()=>{
-    dispatch(adminTodos())
-   
-  
-    
-  },[dispatch])
-  console.log("kjandknasdas",data)
+  console.log("props", props);
+  const [state, setstate] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (props.adminTodos) {
+      setstate(props.adminTodos);
+    }
+  }, [props.adminTodos]);
+
+  useEffect(() => {
+    dispatch(adminTodos());
+  }, [props.broadCastUpdates]);
+
+  useEffect(() => {
+    setstate(
+      globalSearch(props.adminTodos ? props.adminTodos : [], props.searchString)
+    );
+  }, [props.searchString]);
+
+  useEffect(() => {
+    dispatch(adminTodos());
+  }, []);
   return (
     <React.Fragment>
       <DataTable
@@ -31,7 +43,7 @@ const AdminTodoDataTable = (props) => {
         fixedHeader={props.fixedHeader ? props.fixedHeader : false}
         title={props.tableHeader ? props.tableHeader : "Todo's"}
         columns={props.columns ? props.columns : []}
-        data={data}
+        data={state}
         // selectableRows={props.selectableRows ? props.selectableRows : true}
         // Clicked
         // keyField="package_id"
@@ -51,7 +63,10 @@ const AdminTodoDataTable = (props) => {
   );
 };
 const matStateToprops = (state) => {
-  console.log("acksnkcnsncks",state)
-  return { adminTodos: state.adminReducers.adminTodos};
+  // console.log("acksnkcnsncks", state.userTodos.state.state.broadCastUpdates);
+  return {
+    adminTodos: state.adminReducers.adminTodos,
+    broadCastUpdates: state.userTodos.broadCastUpdates,
+  };
 };
- export default connect(matStateToprops, null)(AdminTodoDataTable);
+export default connect(matStateToprops, null)(AdminTodoDataTable);

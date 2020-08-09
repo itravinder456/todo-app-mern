@@ -6,14 +6,11 @@ export const columns = memoize((clickHandler) => [
     name: "Todo Title",
     selector: "todoTitle",
     sortable: true,
-    // width: "25%",
   },
   {
     name: "Description",
     selector: "todoDescription",
     sortable: true,
-    // right: true,
-    // width: "25%",
   },
   {
     name: "Priority",
@@ -21,7 +18,6 @@ export const columns = memoize((clickHandler) => [
     sortable: true,
     format: (row) =>
       row.todoPriority == 1 ? "High" : row.todoPriority == 2 ? "Medium" : "Low",
-    // right: true,
     width: "10%",
   },
   {
@@ -29,7 +25,6 @@ export const columns = memoize((clickHandler) => [
     selector: "todoStatus",
     sortable: true,
     format: (row) => (row.todoStatus == 1 ? "Active" : "Completed"),
-    // right: true,
     width: "10%",
   },
 
