@@ -45,6 +45,7 @@ export async function getServiceCALLS(serviceURI, dataObject = {}) {
 
   const prepareURL = hostName + serviceURI;
   var tempResponseObject = {};
+  console.log("prepareURL =", prepareURL, "headers=", headers);
   tempResponseObject = await axios({
     method: "GET",
     url: prepareURL,
@@ -54,6 +55,9 @@ export async function getServiceCALLS(serviceURI, dataObject = {}) {
     },
   }).then((response) => {
     console.log("API Response Object (Get Service Call)=", response.data);
+    if (response.data.message == "Auth failed") {
+      removeSession();
+    }
     return response.data;
   });
   return tempResponseObject;
@@ -89,7 +93,9 @@ export async function postServiceCALLS(serviceURI, dataObject = {}) {
     })
     .then((response) => {
       console.log("API Response Object (Post Service Call)=", response.data);
-
+      if (response.data.message == "Auth failed") {
+        removeSession();
+      }
       var responsedata = response.data;
 
       return response.data;
@@ -117,6 +123,7 @@ export function checkSession() {
 export function removeSession() {
   // localStorage.removeItem(SESSION_KEY_NAME);
   localStorage.clear();
+  window.location.href = "/login";
 }
 
 /**

@@ -13,24 +13,33 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 let users = [];
-let adminRoom;
+let adminRoom = "admin";
 io.on('connect', (socket) => {
     console.log("socket io is started..", socket.id)
-    socket.on('todoCreated', (user, callback) => {
-        console.log("user1", user.user, "action", user.action, "--", user.admin)
-        user.socketId = socket.id;
-        users.push(user)
-        let adminUser = users.filter((eachUser) => { return eachUser.user == "admin" })
-        console.log("adminUser", adminUser);
-        if (adminUser) {
-            socket.broadcast.to(adminUser.socketId).emit("todoCreated", user);
+
+    socket.on('JoinUser', (user, callback) => {
+        if (user) {
+            user.socketId = socket.id;
+            users.push(user)
+            if (user.userRole[0].userRoleType == 1) {
+                socket.join(adminRoom)
+            }
         }
+    });
+
+    socket.on('Todo', (user, callback) => {
+        let messageObject = {};
+        if (user.action === "ADD") {
+            messageObject.message = `New Todo was created with ${user.todoPriority == 1 ? "High" : user.todoPriority == 2 ? "Medium" : "Low"} priority by ${user.firstName + " " + user.lastName}`
+        }
+        else if (user.action === "UPDATE") {
+            messageObject.message = `Todo was updated by ${user.firstName + " " + user.lastName}`
+        }
+        socket.broadcast.to(adminRoom).emit('Todo', messageObject);
     });
 
     socket.on('disconnect', () => {
         console.log("socketIO disconnected.", socket.id)
-        let disconnectedUser = _.findIndex(users, { socketId: socket.id });
-        users.splice(disconnectedUser, 1);
     })
 });
 

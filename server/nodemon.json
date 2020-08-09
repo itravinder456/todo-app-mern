@@ -1,6 +1,7 @@
 {
     "env": {
         "MONGO_ATLAS_PW": "asdf@1234",
-        "JWT_KEY": "secret"
+        "JWT_KEY": "secretsrc",
+        "MONGODB_CONNECTION_STRING": "mongodb+srv://nani:asdf@1234@portfolio-qhmju.mongodb.net/TodoApp?retryWrites=true&w=majority"
     }
 }

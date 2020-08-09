@@ -38,7 +38,7 @@ const loginUserRequest = (payload) => {
           //   config.SESSION_KEY_NAME,
           //   JSON.stringify(resp.user)
           // );
-          dispatch(loginPayload(resp.user.token));
+          dispatch(loginPayload(resp.user));
         }
         else{
           dispatch(loginPayload(resp));  

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../navs/navBar";
 import SideBar from "../navs/sideBar";
 import { Button, Segment } from "semantic-ui-react";
@@ -8,13 +8,28 @@ import { columns } from "../plugins/DataTableColumnConfiguration";
 import UserTodoModal from "./userTodoModal/UserTodoModal";
 import { toastMessage } from "../../tools/Toaster";
 import Input from "./userTodoModal/Input";
+import { useDispatch, connect } from "react-redux";
+import GetUserTodos from "../../Redux/userActions/UserTodoAction";
+import { globalSearch, postServiceCALLS } from "../../tools/helpers";
 
-const UserContent = () => {
+const UserContent = ({ userTodos }) => {
+  console.log("userTodos props", userTodos);
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
+  const [todos, setTodos] = useState([]);
 
-  const handleActionsFromDataTable = (e, row) => {
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(GetUserTodos({}));
+  }, []);
+
+  useEffect(() => {
+    setTodos(userTodos && userTodos.status ? userTodos.data : []);
+  }, [userTodos]);
+
+  const handleActionsFromDataTable = async (e, row) => {
     const id = e.target.id;
     if (id == "edit") {
       setAddTodo(true);
@@ -23,8 +38,20 @@ const UserContent = () => {
     }
     if (id == "delete") {
       //perform delete operation by passing _id #{row._id}
-      toastMessage(`Todo was deleted successfully`, "success");
+      let result = await postServiceCALLS("/usertodos/deletetodo", row);
+      if (result.status) {
+        toastMessage(result.message, "error");
+        dispatch(GetUserTodos({}));
+      }
     }
+  };
+
+  const handleSearch = (e) => {
+    const todos = globalSearch(
+      userTodos && userTodos.status ? userTodos.data : [],
+      e.target.value
+    );
+    setTodos(todos);
   };
 
   return (
@@ -39,7 +66,10 @@ const UserContent = () => {
           <div className="content mt-10">
             <UserTodoModal
               updateTodoObject={updateTodoObject}
-              onClose={() => setAddTodo(false)}
+              onClose={() => {
+                setAddTodo(false);
+                dispatch(GetUserTodos({}));
+              }}
               updateTodo={updateTodo}
               setUpdateTodo={(e) => setUpdateTodo(e)}
               open={addTodo}
@@ -59,7 +89,12 @@ const UserContent = () => {
                         <div className="flex">
                           {/* <h5 className="mt-2">Search:</h5> */}
                           <div className="col-md-12">
-                            <Input placeholder="search" icon={true} loading={false} />
+                            <Input
+                              onChange={handleSearch}
+                              placeholder="search"
+                              icon={true}
+                              loading={false}
+                            />
                           </div>
                         </div>
                       </div>
@@ -75,6 +110,7 @@ const UserContent = () => {
                   </Segment>
                   <Segment>
                     <TodoDataTable
+                      data={todos}
                       columns={columns(handleActionsFromDataTable)}
                     />
                   </Segment>
@@ -89,4 +125,9 @@ const UserContent = () => {
   );
 };
 
-export default UserContent;
+const mapStateToProps = (state) => {
+  console.log("cjkasckscnasns", state);
+  return { userTodos: state.userTodos.userTodos };
+};
+
+export default connect(mapStateToProps, null)(UserContent); // this connect is a hoc component

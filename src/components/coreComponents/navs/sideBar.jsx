@@ -2,16 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { removeSession, getCacheObject } from "../../tools/helpers";
 import { useSelector } from "react-redux";
-import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
 
 const SideBar = (props) => {
   const user = getCacheObject(config.SESSION_KEY_NAME);
   console.log("userObject", user);
-
-  useEffect(() => {
-    let socket = getSocketIOInstance("sidebar");
-  }, []);
 
   return (
     <>
@@ -33,7 +28,9 @@ const SideBar = (props) => {
                 {user.firstName}
                 <strong> {user.lastName}</strong>
               </span>
-              <span className="user-role">{user.userRole[0].userRoleType==1 ? "Administrator": "Staff"}</span>
+              <span className="user-role">
+                {user.userRole[0].userRoleType == 1 ? "Administrator" : "Staff"}
+              </span>
               <span className="user-status">
                 <i className="fa fa-circle" />
                 <span>Online</span>
@@ -61,13 +58,22 @@ const SideBar = (props) => {
               <li className="header-menu">
                 <span>General</span>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/view-users-todos">
                   <i className="fa fa-book" />
                   <span className="menu-text">Users Todos</span>
                   <span className="badge badge-pill badge-primary">new</span>
                 </Link>
-              </li>
+              </li> */}
+              {user.userRole[0].userRoleType == 1 ? (
+                <li>
+                  <Link to="/view-users-todos">
+                    <i className="fa fa-book" />
+                    <span className="menu-text">Users Todos</span>
+                    <span className="badge badge-pill badge-primary">new</span>
+                  </Link>
+                </li>
+              ) : null}
               {/* <li>
                 <a href="#">
                   <i className="fa fa-calendar" />

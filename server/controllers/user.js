@@ -70,14 +70,14 @@ exports.user_login = (req, res, next) => {
       if (user.length < 1) {
         return res.status(200).json({
           message: "Invalid username/password.",
-          token:"fail"
+          token: "fail"
         });
       }
       bcrypt.compare(req.body.password, user[0].hashedPassword, (err, result) => {
         if (err) {
           return res.status(200).json({
             message: "Invalid username/password..",
-            token:"fail"
+            token: "fail"
           });
         }
         if (result) {
@@ -87,9 +87,9 @@ exports.user_login = (req, res, next) => {
               userId: user[0].userId,
               password: user[0].hashedPassword,
             },
-            "secretsrc",
+            process.env.JWT_KEY,
             {
-              expiresIn: "1h"
+              expiresIn: "5h"
             }
           );
           User.aggregate([

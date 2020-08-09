@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require('path'); 
 const cors = require('cors');
+require('dotenv').config()
 
 const userRoutes = require('./routes/user');
 const todoRoute = require("./routes/todoRoute")

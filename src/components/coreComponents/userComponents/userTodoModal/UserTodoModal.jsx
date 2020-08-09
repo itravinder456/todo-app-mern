@@ -4,9 +4,14 @@ import Modal from "react-bootstrap/Modal";
 import Input from "./Input";
 import TextArea from "./TextArea";
 import Dropdown from "./Dropdown";
-import { validateForm } from "../../../tools/helpers";
+import {
+  validateForm,
+  postServiceCALLS,
+  getCacheObject,
+} from "../../../tools/helpers";
 import { getSocketIOInstance } from "../../SocketIO";
 import { toastMessage } from "../../../tools/Toaster";
+import config from "../../../tools/config";
 
 const statusOptions = [
   { key: "1", value: 1, icon: "circle", text: "Active" },
@@ -48,30 +53,40 @@ const UserTodoModal = (props) => {
     setState(state);
   }, [state]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let validationFields = {
       todoTitle: "",
       todoPriority: "",
     };
-    if (props.updateTodo) {
-      validationFields.todoStatus = "";
-    }
+    // if (props.updateTodo) {
+    //   validationFields.todoStatus = "";
+    // }
     let validateFormResults = validateForm(state, validationFields);
     setErrors(validateFormResults.errors);
     if (!validateFormResults.formIsValid) {
       return false;
     }
-    let user = {
-      user: state.todoTitle,
-      action: "Todo was created",
-      room: "testRoom",
-    };
-    socket.emit("todoCreated", user, (error) => {
-      if (error) {
-        alert(error);
+    let result = await postServiceCALLS(
+      props.updateTodo ? "/usertodos/updatetodo" : "/usertodos/createtodo",
+      state
+    );
+    if (result.status) {
+      //socket realted code START
+      let action = getCacheObject(config.SESSION_KEY_NAME);
+      action.action = `${props.updateTodo ? "UPDATE" : "ADD"}`;
+      if (props.updateTodo) {
+        action.todoPriority = state.todoPriority;
       }
-    });
-    props.onClose();
+      socket.emit("Todo", action, (error) => {
+        if (error) {
+          alert(error);
+        }
+      });
+      // END
+
+      toastMessage(result.message, "success");
+      props.onClose();
+    }
   };
 
   const clearFields = () => {
@@ -82,10 +97,7 @@ const UserTodoModal = (props) => {
   };
 
   useEffect(() => {
-    socket = getSocketIOInstance("userContent");
-    socket.on("todoCreated", (message) => {
-      toastMessage(`Todo was created by ${message.user}`, "info");
-    });
+    socket = getSocketIOInstance();
   }, []);
 
   console.log("satte", state);

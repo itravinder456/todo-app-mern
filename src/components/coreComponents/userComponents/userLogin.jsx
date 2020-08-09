@@ -9,7 +9,7 @@ import {
   checkSession,
   validateForm,
 } from "../../tools/helpers";
-import config from "../../tools/config";
+import { intiateUserSocketConnection } from "../SocketIO";
 const UserLogin = (returnActionReducerObject) => {
   // from here we are taking that main object ok na??
   // wait ///suppose i have called this componet from other component then i have to pass props from that compoent actually,like
@@ -62,6 +62,7 @@ const UserLogin = (returnActionReducerObject) => {
 
   console.log("clasncksnckcsac", returnActionReducerObject);
   if (checkSession()) {
+    intiateUserSocketConnection();
     return <Redirect to="/dashboard" />;
   }
   return (
@@ -82,7 +83,9 @@ const UserLogin = (returnActionReducerObject) => {
                       </label>
                       <input
                         onChange={(e) => handleUser(e, "userName")}
-                        className={`form-control py-4 ${errors.userName ? "invalid-field" : ""}`}
+                        className={`form-control py-4 ${
+                          errors.userName ? "invalid-field" : ""
+                        }`}
                         id="inputEmailAddress"
                         type="text"
                         placeholder="Enter email address"
@@ -94,7 +97,9 @@ const UserLogin = (returnActionReducerObject) => {
                       </label>
                       <input
                         onChange={(e) => handleUser(e, "password")}
-                        className={`form-control py-4 ${errors.password ? "invalid-field" : ""}`}
+                        className={`form-control py-4 ${
+                          errors.password ? "invalid-field" : ""
+                        }`}
                         id="inputPassword"
                         type="password"
                         placeholder="Enter password"

@@ -22,8 +22,16 @@ const Routes = () => {
         {/* @all routes should be handled within this section */}
         {/* ************************START******************************* */}
         <ProtectedRoute exact path="/dashboard" component={UserContent} />
-        <ProtectedRoute exact path="/view-users-todos" component={AdminDashboard} />
+        <ProtectedRoute
+          exact
+          path="/view-users-todos"
+          component={AdminDashboard}
+        />
         {/* END */}
+
+        <Route path="*">
+          <Redirect to="/login" />
+        </Route>
       </Switch>
     </>
   );
