@@ -1,7 +1,8 @@
 import userConstants from '../userConstants/userConstants'
 
 const initial_state = {
-    loginedUser:"" 
+    loginedUser:"" ,
+    RegisterUser:"" 
 }
 
 const userLoginReducer = (state = initial_state, action) => {
@@ -14,13 +15,19 @@ const userLoginReducer = (state = initial_state, action) => {
                     loginedUser: action.payload
                 }
             }else{
-                console.log("akdsjcscacscdask",action)
-                    return {
-                        ...state,
-                        loginedUser:action.payload.token
-                    }
+                return {
+                    ...state,
+                    loginedUser:action.payload.token
                 }
-              
+            }
+            case userConstants.user_Register:
+                console.log("akdsjcscacscdask",action)
+                    return{
+                        ...state,
+                          RegisterUser:action.payload 
+
+                        
+                    }
         default:
             return {
                 state

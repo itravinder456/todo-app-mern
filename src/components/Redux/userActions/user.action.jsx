@@ -55,6 +55,70 @@ export function loginPayload(payload) {
     payload,
   };
 }
+
+
+
+// registration Actions-----------------------------------------------------------
+
+
+export function signUpUserRequest (payload) {
+  return async (dispatch) => {
+    let resp = await postServiceCALLS("/user/signup",payload)
+    console.log("asdnjakdnjndkdnsjakd", resp);
+    if (resp) {
+      if (resp.status) {
+      
+       
+          dispatch(signUpUserPayload(resp.status));
+        }
+        else{
+          dispatch(signUpUserPayload(resp.status));  
+        }
+      }
+
+  };
+};
+
+
+
+export function signUpUserPayload(payload) {
+  console.log("ckaskcjskcbsc",payload)
+  return {
+    type: userConstants.user_Register,
+    payload,
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   const setToken = (token) => {
 //     localStorage.setItem('token', token);
 //   }
