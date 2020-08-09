@@ -35,6 +35,9 @@ io.on('connect', (socket) => {
         else if (user.action === "UPDATE") {
             messageObject.message = `Todo was updated by ${user.firstName + " " + user.lastName}`
         }
+        else if (user.action === "DELETE") {
+            messageObject.message = `Todo was deleted by ${user.firstName + " " + user.lastName}`
+        }
         socket.broadcast.to(adminRoom).emit('Todo', messageObject);
     });
 

@@ -10,7 +10,13 @@ import { toastMessage } from "../../tools/Toaster";
 import Input from "./userTodoModal/Input";
 import { useDispatch, connect } from "react-redux";
 import GetUserTodos from "../../Redux/userActions/UserTodoAction";
-import { globalSearch, postServiceCALLS } from "../../tools/helpers";
+import {
+  globalSearch,
+  postServiceCALLS,
+  getCacheObject,
+} from "../../tools/helpers";
+import { getSocketIOInstance } from "../SocketIO";
+import config from "../../tools/config";
 
 const UserContent = ({ userTodos }) => {
   console.log("userTodos props", userTodos);
@@ -42,6 +48,16 @@ const UserContent = ({ userTodos }) => {
       if (result.status) {
         toastMessage(result.message, "error");
         dispatch(GetUserTodos({}));
+        //socket realted code START
+        let action = getCacheObject(config.SESSION_KEY_NAME);
+        action.action = `DELETE`;
+        let socket = getSocketIOInstance();
+        socket.emit("Todo", action, (error) => {
+          if (error) {
+            alert(error);
+          }
+        });
+        // END
       }
     }
   };
