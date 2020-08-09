@@ -46,3 +46,12 @@ exports.deleteUserTodo = (req, res, next) => {
         });
     })
 };
+
+exports.getAllUsersTodos = (req, res, next) => {
+    Todo.find({ status: 1, userId: { $ne: req.headers.userid } }).then((todos) => {
+        return res.status(200).json({
+            status: true,
+            data: todos
+        });
+    })
+};
