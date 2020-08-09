@@ -85,7 +85,7 @@ const UserTodoModal = (props) => {
       // END
 
       toastMessage(result.message, "success");
-      props.onClose();
+      clearFields();
     }
   };
 
