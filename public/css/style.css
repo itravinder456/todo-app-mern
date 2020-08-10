@@ -19,7 +19,12 @@
 .navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
   top: -10px;
 }
-
+.table-headerbg{
+  background-color:#e3e3e3 !important; 
+}
+.text-yellow{
+ background-color:#cea528  !important; 
+}
 @media (min-width: 576px) {
   .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
     text-align: center;

@@ -43,51 +43,8 @@ export default class Navbar extends Component {
                     Home
                     <span class="sr-only">(current)</span>
                   </Link>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-envelope-o">
-                      <span class="badge badge-danger">11</span>
-                    </i>
-                    Link
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">
-                    <i class="fa fa-envelope-o">
-                      <span class="badge badge-warning">11</span>
-                    </i>
-                    Disabled
-                  </a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i class="fa fa-envelope-o">
-                      <span class="badge badge-primary">11</span>
-                    </i>
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div>
-                </li>
+                  </li>
+                
               </ul>
               <ul class="navbar-nav ">
                 <li class="nav-item">
@@ -98,14 +55,7 @@ export default class Navbar extends Component {
                     Test
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-globe fs-18">
-                      <span class="badge badge-success">11</span>
-                    </i>
-                    Test
-                  </a>
-                </li>
+               
               </ul>
               <div class="width20">
                 <input
