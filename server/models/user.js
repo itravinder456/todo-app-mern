@@ -13,8 +13,9 @@ const userSchema = mongoose.Schema({
     lastName: { type: String, required: true },
     phone: { type: Number },
     userName: { type: String, required: true, unique: true },
-    userId: { type: Number, required: true, unique: true }
+    userId: { type: Number, required: true, unique: true },
+    status: { type: Number, default: 1 }
 });
 
-module.exports = mongoose.model('users', userSchema,"users");
+module.exports = mongoose.model('users', userSchema, "users");
 

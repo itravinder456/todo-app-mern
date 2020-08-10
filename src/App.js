@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Main from './components/coreComponents/Main';
-import Routes from './components/routes/routes';
+import Routes from './components/routes/Routes';
 import Toaster, { toastMessage } from './components/tools/Toaster';
 import { intiateUserSocketConnection, getSocketIOInstance } from './components/coreComponents/SocketIO';
 import { broadCastUpdates } from './components/Redux/userActions/UserTodoAction';

@@ -67,7 +67,7 @@ const SideBar = (props) => {
               </li> */}
               {user.userRole[0].userRoleType == 1 ? (
                 <li>
-                  <Link to="/view-users-todos">
+                  <Link to="/admin/view-users-todos">
                     <i className="fa fa-book" />
                     <span className="menu-text">Users Todos</span>
                     <span className="badge badge-pill badge-primary">new</span>
@@ -393,7 +393,7 @@ const SideBar = (props) => {
             </div>
           </div>
           <div>
-            <Link to="/login" onClick={() => removeSession()}>
+            <Link to="/login" title="Logout" onClick={() => removeSession()}>
               <i className="fa fa-power-off" />
             </Link>
           </div>

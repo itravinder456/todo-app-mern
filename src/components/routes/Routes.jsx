@@ -6,6 +6,7 @@ import UserContent from "../coreComponents/userComponents/userContent";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboard from "../coreComponents/adminCompos/AdminDashboard";
+import UserManagement from "../coreComponents/adminCompos/UserManagement";
 
 const Routes = () => {
   return (
@@ -21,11 +22,18 @@ const Routes = () => {
         {/* The below all are protected routes */}
         {/* @all routes should be handled within this section */}
         {/* ************************START******************************* */}
+
         <ProtectedRoute exact path="/dashboard" component={UserContent} />
+        <ProtectedRoute exact path="/admin-dashboard" component={UserContent} />
         <ProtectedRoute
           exact
-          path="/view-users-todos"
+          path="/admin-view-users-todos"
           component={AdminDashboard}
+        />
+        <ProtectedRoute
+          exact
+          path="/admin-userManagement"
+          component={UserManagement}
         />
         {/* END */}
 

@@ -72,6 +72,12 @@ exports.user_login = (req, res, next) => {
           token: "fail"
         });
       }
+      else if (user[0].status === 0) {
+        return res.status(200).json({
+          message: "User has been blocked by administrator.",
+          token: "fail"
+        });
+      }
       bcrypt.compare(req.body.password, user[0].hashedPassword, (err, result) => {
         if (err) {
           return res.status(200).json({
@@ -136,17 +142,46 @@ exports.user_login = (req, res, next) => {
     });
 };
 
-exports.user_delete = (req, res, next) => {
-  User.remove({ _id: req.params.userId })
+exports.user_update = (req, res, next) => {
+  User.findOneAndUpdate({ userId: req.body.userId }, { $set: { status: req.body.status } })
     .exec()
     .then(result => {
       res.status(200).json({
-        message: "User deleted"
+        status: true,
+        message: "User updated."
       });
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({
+      res.status(200).json({
+        status: false,
+        error: err
+      });
+    });
+};
+
+exports.get_users = (req, res, next) => {
+  User.aggregate([
+    { "$match": { "userId": { $ne: Number(req.headers.userid) } } },
+    { $unset: ["hashedPassword"] },
+    {
+      $lookup: {
+        from: "userRoles", // collection name in db
+        localField: "userId",
+        foreignField: "userId",
+        as: "userRole"
+      }
+    }]).exec()
+    .then(result => {
+      res.status(200).json({
+        status: true,
+        data: result
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(200).json({
+        status: false,
         error: err
       });
     });

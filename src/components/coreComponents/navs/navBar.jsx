@@ -1,24 +1,20 @@
-import React,{useState,useEffect} from 'react'
-import SideBar from "./sideBar";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {useDispatch, connect } from 'react-redux'
-import { sideMenuActionPayload } from '../../Redux/sideMenu.action';
+import { useDispatch, connect } from "react-redux";
+import { JQuery } from "../../tools/helpers";
 
 const NavBar = () => {
+  const disaptch = useDispatch();
+  const [menu, setMenu] = useState(false);
 
-  const  disaptch=useDispatch()
-  const [menu,setMenu]=useState(false)
-
-  const handleToggleMenu=()=>{
-    setMenu(!menu)
-    disaptch(sideMenuActionPayload(menu))
-  }
-  // useEffect(()=>disaptch(),[useDispatch])
+  useEffect(() => {
+    JQuery();
+  }, []);
   return (
     <>
       <div className="navbarFixed">
         <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-          <div onClick={handleToggleMenu}
+          <div
             id="toggle-sidebar"
             className="cursor-Pointer toggleMenuBar btn btn-secondary rounded-0 nav-icon1"
           >
@@ -50,8 +46,7 @@ const NavBar = () => {
                   Home
                   <span class="sr-only">(current)</span>
                 </Link>
-                </li>
-              
+              </li>
             </ul>
             <ul class="navbar-nav ">
               <li class="nav-item">
@@ -62,7 +57,6 @@ const NavBar = () => {
                   Test
                 </a>
               </li>
-             
             </ul>
             <div class="width20">
               <input
@@ -76,14 +70,9 @@ const NavBar = () => {
           </div>
         </nav>
       </div>
-  
     </>
   );
-}
-
-const mapStateToProps = (state) => {
-  console.log("askjdaksddsjkdsn",state)
-  return { sideMenuToggle: state.sideMenuReducer.sideMenuToggle };
 };
 
-export default connect(mapStateToProps, null)(NavBar); 
+
+export default NavBar;

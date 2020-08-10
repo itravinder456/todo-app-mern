@@ -18,10 +18,10 @@ import {
 } from "../../tools/helpers";
 import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
+import { AdminCards } from "../adminCompos/AdminCards";
 
-const UserContent = (props) => {
-  console.log("userTodos props", props);
-  let userTodos=props
+const UserContent = ({ userTodos }) => {
+  // let userTodos=props
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
@@ -74,7 +74,11 @@ const UserContent = (props) => {
 
   return (
     <>
-      <div className={props.sideMenuToggle?"MainContentWrapper page-wrapper default-theme sidebar-bg bg1 toggled ":"MainContentWrapper page-wrapper default-theme sidebar-bg bg1 "}>
+      <div
+        className={
+          "MainContentWrapper page-wrapper default-theme sidebar-bg bg1 "
+        }
+      >
         {/* page-content  */}
 
         <SideBar />
@@ -92,57 +96,8 @@ const UserContent = (props) => {
               setUpdateTodo={(e) => setUpdateTodo(e)}
               open={addTodo}
             />
-            {
-              user.userRole[0].userRoleType===1?
-              <div class="row mt20">
-                            <div class="col-xl-3 col-md-6">
-                            <Link to="/dashboard">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">My Todo's</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                                </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link to="/view-users-todos">
-                                <div class="card text-yellow text-white mb-4">
-                                    <div class="card-body">Users Todo's</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                   
-           
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                                
-                                  </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">User Management</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">View Logs</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                 
-                 
-                 :""}
-                
+            {user.userRole[0].userRoleType === 1 ? <AdminCards /> : ""}
+
             <div className="row ">
               <div className="form-group col-md-12 mt-3">
                 <Segment.Group>
@@ -195,11 +150,11 @@ const UserContent = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("asndksadndnksjdn",state)
-  return { userTodos: state.userTodos.userTodos,
+  console.log("asndksadndnksjdn", state);
+  return {
+    userTodos: state.userTodos.userTodos,
 
- sideMenuToggle: state.sideMenuReducer.state.sideMenuToggle 
-  
+    sideMenuToggle: state.sideMenuReducer.state.sideMenuToggle,
   };
 };
 
