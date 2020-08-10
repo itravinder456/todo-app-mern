@@ -4,6 +4,7 @@ const userConstants = {
   user_Register: "user_Register",
   admin_Todos: "admin_Todos",
   broadCastUpdates: "broadCastUpdates",
+  sideMenuToggle: "sideMenuToggle",
 };
 
 export default userConstants;

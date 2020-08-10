@@ -19,8 +19,9 @@ import {
 import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
 
-const UserContent = ({ userTodos }) => {
-  console.log("userTodos props", userTodos);
+const UserContent = (props) => {
+  console.log("userTodos props", props);
+  let userTodos=props
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
@@ -73,7 +74,7 @@ const UserContent = ({ userTodos }) => {
 
   return (
     <>
-      <div className="MainContentWrapper page-wrapper default-theme sidebar-bg bg1 ">
+      <div className={props.sideMenuToggle?"MainContentWrapper page-wrapper default-theme sidebar-bg bg1 toggled ":"MainContentWrapper page-wrapper default-theme sidebar-bg bg1 "}>
         {/* page-content  */}
 
         <SideBar />
@@ -194,7 +195,12 @@ const UserContent = ({ userTodos }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { userTodos: state.userTodos.userTodos };
+  console.log("asndksadndnksjdn",state)
+  return { userTodos: state.userTodos.userTodos,
+
+ sideMenuToggle: state.sideMenuReducer.state.sideMenuToggle 
+  
+  };
 };
 
 export default connect(mapStateToProps, null)(UserContent); // this connect is a hoc component
