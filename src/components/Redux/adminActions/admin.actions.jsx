@@ -1,4 +1,4 @@
-import { restApiCall, getCacheObject, setCacheObject, postServiceCALLS } from "../../tools/helpers";
+import { restApiCall, getCacheObject, setCacheObject, postServiceCALLS, getServiceCALLS } from "../../tools/helpers";
 import userConstants from "../userConstants/userConstants";
 import { createBrowserHistory } from "history";
 import { useHistory } from "react-router-dom";
@@ -28,6 +28,30 @@ export function adminTodosPayload(payload) {
 
 
 
+
+
+export function adminUserAction  (){
+  return async (dispatch) => {
+    let resp = await getServiceCALLS("/user")
+    console.log("asdnjakdnjndkdnsjakd", resp);
+    if (resp) {
+
+          dispatch(adminUserActionPayload(resp));
+        
+      
+      }
+
+  };
+};
+
+export function adminUserActionPayload(payload) {
+  
+  console.log("ckaskcjskcbsc",payload)
+  return {
+    type: userConstants.user_Management,
+    payload,
+  };
+}
 
 
 

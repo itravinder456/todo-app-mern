@@ -6,12 +6,21 @@ import Input from "../userComponents/userTodoModal/Input";
 import { AdminCards } from "./AdminCards";
 import UserManagementDataTable from "./userManagementDataTable/UserManagementDataTable";
 import { columns } from "./userManagementDataTable/UserManagementDataTableColumnConfiguration";
+import { contains } from "jquery";
+import { useDispatch, useSelector } from "react-redux";
+import { postServiceCALLS } from "../../tools/helpers";
+import { adminUserAction } from "../../Redux/adminActions/admin.actions";
 
 export const UserManagement = () => {
   const [searchString, setSearchString] = useState("");
-
-  const handleAction = () => {};
-
+  const dispatch = useDispatch();
+  const handleAction =async (e, rowObject) => {
+    let regObj=rowObject
+    regObj["status"]=e.target.value
+    await postServiceCALLS("/user/updateuser",regObj)
+    dispatch(adminUserAction())
+  };
+  
   return (
     <>
       <div className="MainContentWrapper page-wrapper default-theme sidebar-bg bg1 ">
@@ -54,7 +63,8 @@ export const UserManagement = () => {
                   <Segment>
                     <UserManagementDataTable
                       searchString={searchString}
-                      columns={columns(() => handleAction)}
+                      columns={columns( handleAction)}
+                      
                     />
                   </Segment>
                 </Segment.Group>

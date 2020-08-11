@@ -16,7 +16,7 @@ const UserTodoReducer = (state = initial_state, action) => {
         };
       }
 
-    case userConstants.broadCastUpdates:
+    case userConstants.broadCast_Updates:
       return {
         ...state,
         broadCastUpdates: action.payload,

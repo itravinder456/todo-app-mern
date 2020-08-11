@@ -1,36 +1,39 @@
 import DataTable, { createTheme } from "react-data-table-component";
 import { customStyles } from "../../plugins/CustomCssForDataTable"; /// ikada inputs lev ga antuna?lev
 import React, { useEffect } from "react";
-import adminTodos from "../../../Redux/adminActions/admin.actions";
+import {  adminUserAction}  from "../../../Redux/adminActions/admin.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { useState } from "react";
 import { globalSearch } from "../../../tools/helpers";
 
 const UserManagementDataTable = (props) => {
-  console.log("props", props);
+
+
+
+
+  console.log("clkancasnkcnsksa", props);
   const [state, setstate] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (props.adminTodos) {
-      setstate(props.adminTodos);
+    if (props.users) {
+      setstate(props.users);
     }
-  }, [props.adminTodos]);
+  }, [props.users]);
 
   useEffect(() => {
-    dispatch(adminTodos());
-  }, [props.broadCastUpdates]);
+
+    dispatch(adminUserAction())
+  }, [props.broadCastUpdates,dispatch]);
 
   useEffect(() => {
     setstate(
-      globalSearch(props.adminTodos ? props.adminTodos : [], props.searchString)
+      globalSearch(props.users ? props.users : [], props.searchString)
     );
   }, [props.searchString]);
 
-  useEffect(() => {
-    dispatch(adminTodos());
-  }, []);
+
   return (
     <React.Fragment>
       <DataTable
@@ -66,6 +69,7 @@ const matStateToprops = (state) => {
   // console.log("acksnkcnsncks", state.userTodos.state.state.broadCastUpdates);
   return {
     adminTodos: state.adminReducers.adminTodos,
+    users: state.adminReducers.users,
     broadCastUpdates: state.userTodos.broadCastUpdates,
   };
 };

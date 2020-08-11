@@ -48,25 +48,41 @@ const NavBar = () => {
                 </Link>
               </li>
             </ul>
-            <ul class="navbar-nav ">
+            <ul class="navbar-nav bellIcon  fs-14">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <i class="fa fa-bell fs-18">
-                    <span class="badge badge-info">11</span>
-                  </i>
-                  Test
+                <div className="icons">
+                  <div className="notification">
+                    <a href="#">
+                    </a><div className="notBtn" href="#"><a href="#">
+                        {/*Number supports double digets and automaticly hides itself when there is nothing between divs */}
+                        <div className="number">2</div>
+                        <i className="fas fa-bell" />
+                      </a><div className="box">
+                        <a href="#">
+                        </a>
+                        <div className="display">
+                        <div className="cont"><a href="#">{/* Fold this div and try deleting evrything inbetween */}
+                            </a><div className="sec new"><a href="#">
+                              </a><a href="https://codepen.io/Golez/">
+                                <div className="profCont">
+                                  {/* <img className="profile" src="https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg" /> */}
+                                </div>
+                                <div className="txt">James liked your post: "Pure css notification box"</div>
+                                <div className="txt sub">11/7 - 2:30 pm</div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
                 </a>
               </li>
             </ul>
-            <div class="width20">
-              <input
-                class="width100p form-control mr-sm-2 searchInp"
-                type="text"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              {/* <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
-            </div>
+           
           </div>
         </nav>
       </div>

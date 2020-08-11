@@ -14,6 +14,7 @@ const userStatusOptions = [
     text: "Blocked",
   },
 ];
+
 export const columns = memoize((clickHandler) => [
   {
     name: "First Name",
@@ -67,8 +68,8 @@ export const columns = memoize((clickHandler) => [
           {row.todoStatus === 1 ? " " + "Active" + " " : "Blocked"}
         </Button> */}
         <Button.Group size="tiny">
-          <Button style={{borderRadius:"5px 0px 0px 5px"}} color={row.todoStatus === 1 && "green"}>Active</Button>
-          <Button style={{borderRadius:"0px 5px 5px 0px"}} color={row.todoStatus === 0 && "red"}>Blocked</Button>
+          <Button  onClick={(e) => clickHandler(e, row)} style={{borderRadius:"5px 0px 0px 5px"}} color={row.status === 1 && "green"} value={1}>Active</Button>
+          <Button  onClick={(e) => clickHandler(e, row)} style={{borderRadius:"0px 5px 5px 0px"}} color={row.status === 0 && "red"} value={0}>Blocked</Button>
         </Button.Group>
       </div>
     ),

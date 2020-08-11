@@ -85,7 +85,7 @@ const UserContent = ({ userTodos }) => {
         <div className="sectionContent  mbP5 ">
           <NavBar />
 
-          <div className="content mt-10">
+          <div className="content contentWrapper mt-10">
             <UserTodoModal
               updateTodoObject={updateTodoObject}
               onClose={() => {
@@ -112,8 +112,9 @@ const UserContent = ({ userTodos }) => {
                       >
                         <div className="flex">
                           {/* <h5 className="mt-2">Search:</h5> */}
-                          <div className="col-md-12">
+                          <div className="col-md-12 search-border-radius">
                             <Input
+                            className=""
                               onChange={handleSearch}
                               placeholder="search"
                               icon={true}

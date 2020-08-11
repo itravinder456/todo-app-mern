@@ -12,14 +12,14 @@ export default GetUserTodos;
 
 export function userTodosPayLoad(payload) {
   return {
-    type: userConstants.userTodos,
+    type: userConstants.user_Todos,
     payload,
   };
 }
 
 export function broadCastUpdates(payload) {
   return {
-    type: userConstants.broadCastUpdates,
+    type: userConstants.broadCast_Updates,
     payload,
   };
 }
