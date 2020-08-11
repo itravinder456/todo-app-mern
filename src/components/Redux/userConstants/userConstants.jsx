@@ -6,6 +6,7 @@ const userConstants = {
   broadCast_Updates: "broadCast_Updates",
   side_MenuToggle: "side_MenuToggle",
   user_Management: "user_Management",
+  user_Logs: "user_Logs",
 };
 
 export default userConstants;

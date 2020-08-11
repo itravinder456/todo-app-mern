@@ -4,28 +4,6 @@ import { createBrowserHistory } from "history";
 import { useHistory } from "react-router-dom";
 import config from "../../tools/config";
 
-// export function loginUser({ username, password }) {
-//     return  async (dispatch) =>{
-//         return ()=>{
-
-//             let res=await estApiCall("url")
-//             if (res) {
-
-//                 dispatch(loginUser(res));
-//             }
-//         }
-
-//     //   return axios.post(`${API_URL}/signin`, { username, password })
-//     //     .then(response => {
-//     //       // - Save the JWT token
-//     //       setToken(response.data.token);
-//     //       // - redirect to the route '/dashboard'
-//     //       browserHistory.push('/dashboard');
-//     //     })
-//     //     .catch((error) => dispatch(onError(error.response || error)));
-//     // }
-//   };
-// }
 const loginUserRequest = (payload) => {
   return async (dispatch) => {
     let resp = await postServiceCALLS("/user/login",payload)

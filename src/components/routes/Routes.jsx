@@ -7,6 +7,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboard from "../coreComponents/adminCompos/AdminDashboard";
 import UserManagement from "../coreComponents/adminCompos/UserManagement";
+import UserLogs from "../coreComponents/adminCompos/UserLogs";
 
 const Routes = () => {
   return (
@@ -25,6 +26,7 @@ const Routes = () => {
 
         <ProtectedRoute exact path="/dashboard" component={UserContent} />
         <ProtectedRoute exact path="/admin-dashboard" component={UserContent} />
+
         <ProtectedRoute
           exact
           path="/admin-view-users-todos"
@@ -35,6 +37,7 @@ const Routes = () => {
           path="/admin-userManagement"
           component={UserManagement}
         />
+        <ProtectedRoute exact path="/admin-userLogs" component={UserLogs} />
         {/* END */}
 
         <Route path="*">

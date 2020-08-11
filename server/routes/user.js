@@ -12,4 +12,6 @@ router.post("/updateuser", checkAuth, UserController.user_update);
 
 router.get("/", checkAuth, UserController.get_users);
 
+router.get("/view-logs", checkAuth, UserController.view_logs);
+
 module.exports = router;

@@ -57,8 +57,7 @@ export const columns = memoize((clickHandler) => [
     name: "Date Added",
     selector: "createdDate",
     sortable: true,
-    // width: "13.8%",
-    format: (row) => moment(row.createdDate).format("ll"),
+    format: (row) => moment(row.createdDate).format("lll"),
   },
   {
     cell: (row) => (

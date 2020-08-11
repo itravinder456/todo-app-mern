@@ -6,6 +6,7 @@ const Session = require("../models/session")
 const helpers = require("../helpers/helperFunctions");
 const UserRoles = require("../models/userRoles")
 const User = require("../models/user");
+const userLogsModel = require("../models/userLogsModel");
 exports.user_signup = (req, res, next) => {
   User.find({ email: req.body.email })
     .exec()
@@ -172,6 +173,32 @@ exports.get_users = (req, res, next) => {
         as: "userRole"
       }
     }]).exec()
+    .then(result => {
+      res.status(200).json({
+        status: true,
+        data: result
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(200).json({
+        status: false,
+        error: err
+      });
+    });
+};
+
+
+exports.view_logs = (req, res, next) => {
+  userLogsModel.aggregate([
+    { $match: { userId: { $ne: Number(req.headers.userid) } } },
+    { $sort: { dateCreated: -1 } },
+    { $unset: ["users.hashedPassword", "users.userName"] },
+    { $lookup: { from: "userTodos", localField: "todoId", foreignField: "_id", as: "todo" } },
+    { $lookup: { from: "users", localField: "userId", foreignField: "userId", as: "user" } },
+
+  ])
+    .exec()
     .then(result => {
       res.status(200).json({
         status: true,
