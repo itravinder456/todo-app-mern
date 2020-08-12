@@ -5,7 +5,6 @@ import SideBar from "../navs/sideBar";
 import { Button, Segment } from "semantic-ui-react";
 import AdminTodoDataTable from "./allUserTodosDatatable/AdminTodoDataTable";
 import Input from "../userComponents/userTodoModal/Input";
-import { Link } from "react-router-dom";
 import { AdminCards } from "./AdminCards";
 
 export const AdminDashboard = () => {

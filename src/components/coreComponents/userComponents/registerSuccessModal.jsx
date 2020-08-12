@@ -11,7 +11,6 @@ const RegisterSuccessModal = (props) => {
 
     let dispatch=useDispatch()
 
-console.log("acscmslacnscs",props)
   return (
     <Modal
       // {...props}
@@ -50,7 +49,6 @@ console.log("acscmslacnscs",props)
 
 const mapStateToProps=(state)=>{
 
-    console.log("cbjascbasbcscbac",state)
     return { RegisterUser:state.user.RegisterUser
      };
     }

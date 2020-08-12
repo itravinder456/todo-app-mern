@@ -4,7 +4,6 @@ import userConstants from "../userConstants/userConstants";
 export function GetUserTodos (payload) {
   return async (dispatch) => {
     let userTodos = await getServiceCALLS("/usertodos", payload);
-    console.log("asdnjakdnjndkdnsjakd", userTodos);
     dispatch(userTodosPayLoad(userTodos));
   };
 };

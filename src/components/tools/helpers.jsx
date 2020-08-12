@@ -9,27 +9,6 @@ const SESSION_KEY_NAME = config.SESSION_KEY_NAME;
 let headers = {};
 
 export const history = createBrowserHistory();
-export const restApiCall = async (url, method, reqObject) => {
-  let responseData;
-
-  const config = {
-    method: "post",
-    url: url,
-    data: reqObject,
-  };
-  await axios(config)
-    .then((result) => {
-      responseData = result.data;
-    })
-    .catch((error) => {
-      if (error == "Network Error") {
-      } else {
-      }
-    });
-
-  console.log("kansjkdasjkdns", responseData);
-  return responseData;
-};
 
 // Get all getbased service calls.
 export async function getServiceCALLS(serviceURI, dataObject = {}) {
@@ -148,34 +127,8 @@ export function getCacheObject(key_name) {
   data = data ? decryptData(data) : null;
   return data;
 }
-/**
- * @description to get distinct values from array
- * @array
- * @property_name
- */
-export function getDistinctValuesFromArray(array, property_name) {
-  return [...new Set(array.map((object) => object[property_name]))];
-}
 
-/**
- * To filter the Objects based on unique id
- * array = array of object
- * comparingProperty = Specific KEY from the array
- * value = Specific value from thje specific KEY
- */
-export function getFilteredObjects(array, comparingProperty, value) {
-  let results = array.filter((object) => {
-    return object[comparingProperty] == value;
-  });
-  return results;
-}
-/**
- *
- * @param {to make capitalize the First Letter from the string} string
- */
-export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
 
 /**
  *  Global Search is useful to search string and numbers over all ARRAY of OBJECTS
@@ -194,28 +147,6 @@ export function globalSearch(data, searchString = "") {
     return filtered;
   }
   return data;
-}
-
-/**
- * To move scroll position to top at any time
- */
-export function scrollTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
-/**
- *
- * @param {the array of value tobe checked for duplicates} array
- */
-export function checkDuplicateValuesFromArray(array) {
-  let duplicates = array.filter((e, i, a) => a.indexOf(e) !== i); // return duplicates
-  let unique = array.filter((e, i, a) => a.indexOf(e) === i); // [1, 2, 3, 4]
-  let resultArray = {};
-  resultArray.unique = unique;
-  resultArray.duplicates = duplicates;
-  return resultArray;
 }
 
 /**

@@ -7,10 +7,6 @@ var counterSchema = new Schema({
     sequence_value: { type: Number, default: 1 }
 });
 
-// counterSchema.statics.findAndModify = function (query, sort, doc, options, callback) {
-//     return this.collection.findAndModify(query, sort, doc, options, callback);
-// };
-
 var Counter = module.exports = mongoose.model('counters', counterSchema);
 
 var getNextSequenceValue = {

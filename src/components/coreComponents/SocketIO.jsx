@@ -13,7 +13,6 @@ export function intiateUserSocketConnection() {
   });
 }
 
-export function getSocketIOInstance(source) {
-  console.log("source", source);
+export function getSocketIOInstance() {
   return socket;
 }

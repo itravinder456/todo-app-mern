@@ -2,25 +2,6 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const dbConnection = async () => {
     try {
-
-
-        // ####################################
-
-        // const MongoClient = require('mongodb').MongoClient;
-        // const uri = "mongodb+srv://nani:asdf@1234@portfolio-qhmju.mongodb.net/TodoApp?retryWrites=true&w=majority";
-        // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        // client.connect(err => {
-        //     // const collection = client.db("test").collection("devices");
-        //     console.log("connected to atlas")
-        //     client.close();
-        // });
-
-
-        // #########################################
-
-        /**
-         * MongoDB Connection
-         */
         const mongodbURL = "mongodb+srv://nani:asdf@1234@portfolio-qhmju.mongodb.net/TodoApp?retryWrites=true&w=majority";
         //Set up default mongoose connection
         mongoose.connect(mongodbURL, {
@@ -36,12 +17,6 @@ const dbConnection = async () => {
 
         // checks if connection with the database is successful
         db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-        // db.listCollections().toArray(function (err, collInfos) {
-        //     console.log(collInfos);
-        //     // collInfos is an array of collection info objects that look like:
-        //     // { name: 'test', options: {} }
-        // });
 
         // #########################################
 

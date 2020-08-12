@@ -2,7 +2,6 @@ const http = require('http');
 
 const app = require('./app');
 const socketio = require('socket.io');
-var _ = require('lodash');
 
 
 const port = process.env.PORT || 5000;
@@ -15,8 +14,6 @@ const io = socketio(server);
 let users = [];
 let adminRoom = "admin";
 io.on('connect', (socket) => {
-    console.log("socket io is started..", socket.id)
-
     socket.on('JoinUser', (user, callback) => {
         if (user) {
             user.socketId = socket.id;

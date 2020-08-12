@@ -19,14 +19,12 @@ const AdminTodoReducer = (state = initial_state, action) => {
       }
     
     case userConstants.user_Management:
-      console.log("kajdhashdkhdlas", action);
       return {
         ...state,
         users: action.payload.data,
       };
 
     case userConstants.user_Logs:
-      console.log("kajdhashdkhdlas", action);
       return {
         ...state,
         userLogs: action.payload.data,

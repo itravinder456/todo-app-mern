@@ -9,7 +9,6 @@ const initial_state = {
 const UserTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
     case userConstants.user_Todos:
-      console.log("kjcbajcbjkcbkasjbcsjc",action)
       if (action.payload.status) {
         return {
           ...state,

@@ -39,12 +39,10 @@ const UserLogin = (returnActionReducerObject) => {
       return false;
     }
     if (user.password !== "" && user.userName !== "") {
-      console.log("aslkdmlaskds", returnActionReducerObject);
       dispatch(loginUserRequest(user));
     }
   };
 
-  console.log("clasncksnckcsac", returnActionReducerObject);
   if (checkSession()) {
     intiateUserSocketConnection();
     return <Redirect to="/dashboard" />;
@@ -143,7 +141,6 @@ const UserLogin = (returnActionReducerObject) => {
 };
 
 const matStateToprops = (state) => {
-  console.log("cjkasckscnasns", state);
   return { loginedUser: state.user.loginedUser };
 };
 

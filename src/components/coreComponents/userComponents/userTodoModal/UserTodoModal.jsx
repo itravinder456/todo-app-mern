@@ -97,7 +97,6 @@ const UserTodoModal = (props) => {
     socket = getSocketIOInstance();
   }, []);
 
-  console.log("satte", state);
   return (
     <Modal
       // {...props}

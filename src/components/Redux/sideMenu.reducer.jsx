@@ -11,8 +11,6 @@ const initial_state = {
                sideMenuToggle:action.payload,
              };
            
-     
-        
          default:
            return {
              state,

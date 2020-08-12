@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { JQuery } from "../../tools/helpers";
-import moment from 'moment'
+import moment from "moment";
 import { userLogsAction } from "../../Redux/adminActions/admin.actions";
 const NavBar = (props) => {
-  
   const dispatch = useDispatch();
+
   useEffect(() => {
     JQuery();
   }, []);
-  const userLogs =useSelector(state => state.adminReducers.userLogs);
-  const handleGetUserLogs=()=>{
-    dispatch(userLogsAction())
-  }
+  const userLogs = useSelector((state) => state.adminReducers.userLogs);
+  const handleGetUserLogs = () => {
+    dispatch(userLogsAction());
+  };
   useEffect(() => {
-    dispatch(userLogsAction())
+    dispatch(userLogsAction());
   }, []);
-  console.log("acsckskcbascjsabcs",props.userLogs)
   return (
     <>
       <div className="navbarFixed">
@@ -59,41 +58,54 @@ const NavBar = (props) => {
             <ul class="navbar-nav bellIcon  fs-14">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  
-                <div className="icons">
-                  <div onMouseOver={ handleGetUserLogs} className="notification">
-                    <a href="#">
-                    </a><div className="notBtn" href="#"><a href="#">
-                        {/*Number supports double digets and automaticly hides itself when there is nothing between divs */}
-                        <div className="number">{userLogs?userLogs.length:"0"}</div>
-                        <i className="fas fa-bell bellIcon2" />
-                      </a><div className="box">
+                  <div className="icons">
+                    <div
+                      onMouseOver={handleGetUserLogs}
+                      className="notification"
+                    >
+                      <a href="#"></a>
+                      <div className="notBtn" href="#">
                         <a href="#">
-                        </a>
-                        <div className="">
-                          {
-                          userLogs?userLogs.map((item,index)=>{
-                              return(<>
-                              
-                               <div key={index} className=""><a href="#">{/* Fold this div and try deleting evrything inbetween */}
-                            </a><div className="sec new">
-                                <div className="txt">{item.user[0].firstName}:{item.action}</div>
-                                <div className="txt sub">{moment(item.dateCreated).format('lll')}</div>
-                            </div>
+                          <div className="number">
+                            {userLogs ? userLogs.length : "0"}
                           </div>
-                              </>)})
-                          :""}
-                     
+                          <i className="fas fa-bell bellIcon2" />
+                        </a>
+                        <div className="box">
+                          <a href="#"></a>
+                          <div className="">
+                            {userLogs
+                              ? userLogs.map((item, index) => {
+                                  return (
+                                    <>
+                                      <div key={index} className="">
+                                        <a href="#">
+                                          {/* Fold this div and try deleting evrything inbetween */}
+                                        </a>
+                                        <div className="sec new">
+                                          <div className="txt">
+                                            {item.user[0].firstName}:
+                                            {item.action}
+                                          </div>
+                                          <div className="txt sub">
+                                            {moment(item.dateCreated).format(
+                                              "lll"
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  );
+                                })
+                              : ""}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-               
                 </a>
               </li>
             </ul>
-           
           </div>
         </nav>
       </div>
@@ -101,5 +113,4 @@ const NavBar = (props) => {
   );
 };
 
-
-export default NavBar
+export default NavBar;

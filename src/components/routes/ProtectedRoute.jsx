@@ -10,6 +10,7 @@ const ProtectedRoute = ({ component: Component, path, ...rest }) => {
     return <Redirect to="/login" />;
   }
   let user = getCacheObject(config.SESSION_KEY_NAME);
+  
   if (path == "/dashboard") {
     if (user && user.userRole[0].userRoleType == 1) {
       return <Redirect to="/admin-dashboard" />;

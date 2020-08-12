@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { removeSession, getCacheObject } from "../../tools/helpers";
-import { useSelector } from "react-redux";
 import config from "../../tools/config";
 
 const SideBar = (props) => {
   const user = getCacheObject(config.SESSION_KEY_NAME);
-  console.log("userObject", user);
 
   return (
     <>
@@ -58,13 +56,6 @@ const SideBar = (props) => {
               <li className="header-menu">
                 <span>General</span>
               </li>
-              {/* <li>
-                <Link to="/view-users-todos">
-                  <i className="fa fa-book" />
-                  <span className="menu-text">Users Todos</span>
-                  <span className="badge badge-pill badge-primary">new</span>
-                </Link>
-              </li> */}
               {user.userRole[0].userRoleType == 1 ? (
                 <li>
                   <Link to="/admin/view-users-todos">
@@ -74,151 +65,7 @@ const SideBar = (props) => {
                   </Link>
                 </li>
               ) : null}
-              {/* <li>
-                <a href="#">
-                  <i className="fa fa-calendar" />
-                  <span className="menu-text">Calendar</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-folder" />
-                  <span className="menu-text">Examples</span>
-                </a>
-              </li> */}
-              {/*             
-
-              <li className="sidebar-dropdown">
-                <a href="#">
-                  <i className="fa fa-tachometer-alt" />
-                  <span className="menu-text">Dashboard</span>
-                  <span className="badge badge-pill badge-warning">New</span>
-                </a>
-                <div className="sidebar-submenu">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        Dashboard 1
-                        <span className="badge badge-pill badge-success">
-                          Pro
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">Dashboard 2</a>
-                    </li>
-                    <li>
-                      <a href="#">Dashboard 3</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="sidebar-dropdown">
-                <a href="#">
-                  <i className="fa fa-shopping-cart" />
-                  <span className="menu-text">E-commerce</span>
-                  <span className="badge badge-pill badge-danger">3</span>
-                </a>
-                <div className="sidebar-submenu">
-                  <ul>
-                    <li>
-                      <a href="#">Products</a>
-                    </li>
-                    <li>
-                      <a href="#">Orders</a>
-                    </li>
-                    <li>
-                      <a href="#">Credit cart</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="sidebar-dropdown">
-                <a href="#">
-                  <i className="far fa-gem" />
-                  <span className="menu-text">Components</span>
-                </a>
-                <div className="sidebar-submenu">
-                  <ul>
-                    <li>
-                      <a href="#">General</a>
-                    </li>
-                    <li>
-                      <a href="#">Panels</a>
-                    </li>
-                    <li>
-                      <a href="#">Tables</a>
-                    </li>
-                    <li>
-                      <a href="#">Icons</a>
-                    </li>
-                    <li>
-                      <a href="#">Forms</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="sidebar-dropdown">
-                <a href="#">
-                  <i className="fa fa-chart-line" />
-                  <span className="menu-text">Charts</span>
-                </a>
-                <div className="sidebar-submenu">
-                  <ul>
-                    <li>
-                      <a href="#">Pie chart</a>
-                    </li>
-                    <li>
-                      <a href="#">Line chart</a>
-                    </li>
-                    <li>
-                      <a href="#">Bar chart</a>
-                    </li>
-                    <li>
-                      <a href="#">Histogram</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="sidebar-dropdown">
-                <a href="#">
-                  <i className="fa fa-globe" />
-                  <span className="menu-text">Maps</span>
-                </a>
-                <div className="sidebar-submenu">
-                  <ul>
-                    <li>
-                      <a href="#">Google maps</a>
-                    </li>
-                    <li>
-                      <a href="#">Open street map</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="header-menu">
-                <span>Extra</span>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-book" />
-                  <span className="menu-text">Documentation</span>
-                  <span className="badge badge-pill badge-primary">Beta</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-calendar" />
-                  <span className="menu-text">Calendar</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-folder" />
-                  <span className="menu-text">Examples</span>
-                </a>
-              </li>
-             */}
+            
             </ul>
           </div>
         </div>
