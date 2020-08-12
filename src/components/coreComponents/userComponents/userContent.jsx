@@ -8,8 +8,8 @@ import { columns } from "../plugins/DataTableColumnConfiguration";
 import UserTodoModal from "./userTodoModal/UserTodoModal";
 import { toastMessage } from "../../tools/Toaster";
 import Input from "./userTodoModal/Input";
-import { useDispatch, connect } from "react-redux";
-import GetUserTodos from "../../Redux/userActions/UserTodoAction";
+import { useDispatch, useSelector } from "react-redux";
+import {GetUserTodos} from "../../Redux/userActions/UserTodoAction";
 import { Link } from "react-router-dom";
 import {
   globalSearch,
@@ -20,22 +20,22 @@ import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
 import { AdminCards } from "../adminCompos/AdminCards";
 
-const UserContent = ({ userTodos }) => {
-  // let userTodos=props
+const UserContent = () => {
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
   const [todos, setTodos] = useState([]);
-
   let dispatch = useDispatch();
 
+
+  const userTodos =useSelector(state => state.userTodos.userTodos);
+  console.log("nckjnaskcasnccnkc",userTodos)
   useEffect(() => {
     dispatch(GetUserTodos({}));
   }, []);
-
   useEffect(() => {
     setTodos(userTodos && userTodos.status ? userTodos.data : []);
-  }, [userTodos]);
+  }, [todos]);
 
   const handleActionsFromDataTable = async (e, row) => {
     const id = e.target.id;
@@ -150,13 +150,5 @@ const UserContent = ({ userTodos }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log("asndksadndnksjdn", state);
-  return {
-    userTodos: state.userTodos.userTodos,
 
-    sideMenuToggle: state.sideMenuReducer.state.sideMenuToggle,
-  };
-};
-
-export default connect(mapStateToProps, null)(UserContent); // this connect is a hoc component
+export default UserContent

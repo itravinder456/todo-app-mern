@@ -8,7 +8,7 @@ const initial_state = {
 const UserTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
     case userConstants.user_Todos:
-      if (action.payload.status) {
+      if (action.payload.status && action.payload) {
         return {
           ...state,
           userTodos: action.payload,

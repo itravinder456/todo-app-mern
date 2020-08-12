@@ -11,10 +11,13 @@ const AdminTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
     case userConstants.admin_Todos:
       console.log("kajdhashdkhdlas", action);
-      return {
+      if (action.payload.data) {
+          return {
         ...state,
         adminTodos: action.payload.data,
       };
+      }
+    
     case userConstants.user_Management:
       console.log("kajdhashdkhdlas", action);
       return {
@@ -31,7 +34,7 @@ const AdminTodoReducer = (state = initial_state, action) => {
 
     default:
       return {
-        ...state,
+        ...state
       };
   }
 };

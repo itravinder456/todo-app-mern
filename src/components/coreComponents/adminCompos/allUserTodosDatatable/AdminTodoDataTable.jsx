@@ -8,7 +8,7 @@ import { useState } from "react";
 import { globalSearch } from "../../../tools/helpers";
 
 const AdminTodoDataTable = (props) => {
-  console.log("props", props);
+  console.log("prscscsscsops", props);
   const [state, setstate] = useState([]);
   const dispatch = useDispatch();
 

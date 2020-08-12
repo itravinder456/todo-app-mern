@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, connect } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { JQuery } from "../../tools/helpers";
 import moment from 'moment'
 import { userLogsAction } from "../../Redux/adminActions/admin.actions";
 const NavBar = (props) => {
-  const [menu, setMenu] = useState(false);
   
   const dispatch = useDispatch();
   useEffect(() => {
     JQuery();
   }, []);
+  const userLogs =useSelector(state => state.adminReducers.userLogs);
   const handleGetUserLogs=()=>{
     dispatch(userLogsAction())
   }
+  useEffect(() => {
+    dispatch(userLogsAction())
+  }, []);
   console.log("acsckskcbascjsabcs",props.userLogs)
   return (
     <>
@@ -62,14 +65,14 @@ const NavBar = (props) => {
                     <a href="#">
                     </a><div className="notBtn" href="#"><a href="#">
                         {/*Number supports double digets and automaticly hides itself when there is nothing between divs */}
-                        <div className="number">{props.userLogs?props.userLogs.length:"0"}</div>
+                        <div className="number">{userLogs?userLogs.length:"0"}</div>
                         <i className="fas fa-bell bellIcon2" />
                       </a><div className="box">
                         <a href="#">
                         </a>
                         <div className="">
                           {
-                            props.userLogs?props.userLogs.map((item,index)=>{
+                          userLogs?userLogs.map((item,index)=>{
                               return(<>
                               
                                <div key={index} className=""><a href="#">{/* Fold this div and try deleting evrything inbetween */}
@@ -98,9 +101,5 @@ const NavBar = (props) => {
   );
 };
 
-const matStateToprops = (state) => {
-  return {
-    userLogs: state.adminReducers.userLogs,
-  };
-};
-export default connect(matStateToprops, null)(NavBar);
+
+export default NavBar

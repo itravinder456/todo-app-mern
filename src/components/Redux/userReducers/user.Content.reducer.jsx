@@ -8,14 +8,14 @@ const initial_state = {
 
 const UserTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
-    case userConstants.userTodos:
+    case userConstants.user_Todos:
+      console.log("kjcbajcbjkcbkasjbcsjc",action)
       if (action.payload.status) {
         return {
           ...state,
           userTodos: action.payload,
         };
       }
-
     case userConstants.broadCast_Updates:
       return {
         ...state,
@@ -24,7 +24,7 @@ const UserTodoReducer = (state = initial_state, action) => {
 
     default:
       return {
-        state,
+        ...state,
       };
   }
 };
