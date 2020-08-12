@@ -7,10 +7,8 @@ const initial_state = {
 };
 
 const AdminTodoReducer = (state = initial_state, action) => {
-  console.log("scaksjcnkcss", initial_state);
   switch (action.type) {
     case userConstants.admin_Todos:
-      console.log("kajdhashdkhdlas", action);
       if (action.payload.data) {
           return {
         ...state,

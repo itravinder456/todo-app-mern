@@ -7,7 +7,6 @@ import userConstants from "../userConstants/userConstants";
 const adminTodos = (payload) => {
   return async (dispatch) => {
     let resp = await postServiceCALLS("/usertodos/alluserstodos");
-    console.log("asdnjakdnjndkdnsjakd", resp);
     if (resp) {
       dispatch(adminTodosPayload(resp));
     }
@@ -15,7 +14,6 @@ const adminTodos = (payload) => {
 };
 export default adminTodos;
 export function adminTodosPayload(payload) {
-  console.log("ckaskcjskcbsc", payload);
   return {
     type: userConstants.admin_Todos,
     payload,
