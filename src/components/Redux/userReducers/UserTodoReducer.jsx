@@ -23,7 +23,7 @@ const UserTodoReducer = (state = initial_state, action) => {
 
     default:
       return {
-        state,
+        ...state,
       };
   }
 };

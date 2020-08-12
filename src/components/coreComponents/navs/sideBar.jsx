@@ -58,7 +58,7 @@ const SideBar = (props) => {
               </li>
               {user.userRole[0].userRoleType == 1 ? (
                 <li>
-                  <Link to="/admin/view-users-todos">
+                  <Link to="/admin-view-users-todos">
                     <i className="fa fa-book" />
                     <span className="menu-text">Users Todos</span>
                     <span className="badge badge-pill badge-primary">new</span>

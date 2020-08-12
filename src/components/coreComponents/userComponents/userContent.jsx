@@ -8,8 +8,8 @@ import { columns } from "../plugins/DataTableColumnConfiguration";
 import UserTodoModal from "./userTodoModal/UserTodoModal";
 import { toastMessage } from "../../tools/Toaster";
 import Input from "./userTodoModal/Input";
-import { useDispatch, useSelector } from "react-redux";
-import {GetUserTodos} from "../../Redux/userActions/UserTodoAction";
+import { useDispatch, useSelector, connect } from "react-redux";
+import { GetUserTodos } from "../../Redux/userActions/UserTodoAction";
 import { Link } from "react-router-dom";
 import {
   globalSearch,
@@ -20,22 +20,22 @@ import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
 import { AdminCards } from "../adminCompos/AdminCards";
 
-const UserContent = () => {
+const UserContent = ({ userTodos }) => {
+  console.log("userTodos", userTodos);
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
   const [todos, setTodos] = useState([]);
   let dispatch = useDispatch();
+ 
+  // const userTodos = useSelector((state) => state.userTodos.userTodos);
 
-
-  const userTodos =useSelector(state => state.userTodos.userTodos);
-  console.log("nckjnaskcasnccnkc",userTodos)
   useEffect(() => {
     dispatch(GetUserTodos({}));
   }, []);
   useEffect(() => {
     setTodos(userTodos && userTodos.status ? userTodos.data : []);
-  }, [todos]);
+  }, [userTodos]);
 
   const handleActionsFromDataTable = async (e, row) => {
     const id = e.target.id;
@@ -114,7 +114,7 @@ const UserContent = () => {
                           {/* <h5 className="mt-2">Search:</h5> */}
                           <div className="col-md-12 search-border-radius">
                             <Input
-                            className=""
+                              className=""
                               onChange={handleSearch}
                               placeholder="search"
                               icon={true}
@@ -149,6 +149,12 @@ const UserContent = () => {
     </>
   );
 };
+const matStateToprops = (state) => {
+  console.log("state-------", state);
+  return {
+    userTodos: state.userTodos.userTodos,
+  };
+};
+export default connect(matStateToprops, null)(UserContent);
 
-
-export default UserContent
+// export default UserContent

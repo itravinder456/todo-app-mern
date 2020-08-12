@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { JQuery } from "../../tools/helpers";
+import { JQuery, getCacheObject } from "../../tools/helpers";
 import moment from "moment";
 import { userLogsAction } from "../../Redux/adminActions/admin.actions";
+import config from "../../tools/config";
 const NavBar = (props) => {
   const dispatch = useDispatch();
+
+  const user = getCacheObject(config.SESSION_KEY_NAME);
 
   useEffect(() => {
     JQuery();
@@ -55,57 +58,59 @@ const NavBar = (props) => {
                 </Link>
               </li>
             </ul>
-            <ul class="navbar-nav bellIcon  fs-14">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <div className="icons">
-                    <div
-                      onMouseOver={handleGetUserLogs}
-                      className="notification"
-                    >
-                      <a href="#"></a>
-                      <div className="notBtn" href="#">
-                        <a href="#">
-                          <div className="number">
-                            {userLogs ? userLogs.length : "0"}
-                          </div>
-                          <i className="fas fa-bell bellIcon2" />
-                        </a>
-                        <div className="box">
-                          <a href="#"></a>
-                          <div className="">
-                            {userLogs
-                              ? userLogs.map((item, index) => {
-                                  return (
-                                    <>
-                                      <div key={index} className="">
-                                        <a href="#">
-                                          {/* Fold this div and try deleting evrything inbetween */}
-                                        </a>
-                                        <div className="sec new">
-                                          <div className="txt">
-                                            {item.user[0].firstName}:
-                                            {item.action}
-                                          </div>
-                                          <div className="txt sub">
-                                            {moment(item.dateCreated).format(
-                                              "lll"
-                                            )}
+            {user.userRole[0].userRoleType === 1 ? (
+              <ul class="navbar-nav bellIcon  fs-14">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <div className="icons">
+                      <div
+                        onMouseOver={handleGetUserLogs}
+                        className="notification"
+                      >
+                        <a href="#"></a>
+                        <div className="notBtn" href="#">
+                          <a href="#">
+                            <div className="number">
+                              {userLogs ? userLogs.length : "0"}
+                            </div>
+                            <i className="fas fa-bell bellIcon2" />
+                          </a>
+                          <div className="box">
+                            <a href="#"></a>
+                            <div className="">
+                              {userLogs
+                                ? userLogs.map((item, index) => {
+                                    return (
+                                      <>
+                                        <div key={index} className="">
+                                          <a href="#">
+                                            {/* Fold this div and try deleting evrything inbetween */}
+                                          </a>
+                                          <div className="sec new">
+                                            <div className="txt">
+                                              {item.user[0].firstName}:
+                                              {item.action}
+                                            </div>
+                                            <div className="txt sub">
+                                              {moment(item.dateCreated).format(
+                                                "lll"
+                                              )}
+                                            </div>
                                           </div>
                                         </div>
-                                      </div>
-                                    </>
-                                  );
-                                })
-                              : ""}
+                                      </>
+                                    );
+                                  })
+                                : ""}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+                  </a>
+                </li>
+              </ul>
+            ) : null}
           </div>
         </nav>
       </div>
