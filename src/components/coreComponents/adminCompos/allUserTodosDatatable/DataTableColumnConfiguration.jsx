@@ -30,12 +30,12 @@ export const columns = [
   },
   {
     name: "Created By",
-    selector: "createdUserId",
+    selector: (row) => row["user"][0].firstName + " " + row["user"][0].lastName,
     sortable: true,
   },
   {
     name: "Date Added",
-    selector: "createdDate",
+    selector: "createdDate", 
     sortable: true,
     format: (row) => moment(row.createdDate).format("lll"),
   },

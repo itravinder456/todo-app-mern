@@ -10,7 +10,7 @@ export const columns = [
     sortable: true,
   },
   {
-    name: "Action",
+    name: "Todo Status",
     selector: "action",
     sortable: true,
   },

@@ -20,7 +20,7 @@ exports.createUserTodo = (req, res, next) => {
     let todo = new Todo(todoObject);
     todo.save().then((result) => {
         let resultSet = {}
-        resultSet.action = "New todo was created"
+        resultSet.action = "Todo was created"
         resultSet.todoId = result._id;
         resultSet.userId = result.userId;
         let logs = new userLogsModel(resultSet);
@@ -72,11 +72,21 @@ exports.deleteUserTodo = (req, res, next) => {
 };
 
 exports.getAllUsersTodos = (req, res, next) => {
-    Todo.find({ status: 1, userId: { $ne: req.headers.userid } }).then((todos) => {
-        return res.status(200).json({
-            status: true,
-            data: todos
-        });
-    })
-};
+    Todo.aggregate([
+        { "$match": { status: 1, userId: { $ne:Number( req.headers.userid) } } },
+        
+        {
+            $lookup: {
+                from: "users", // collection name in db
+                localField: "userId",
+                foreignField: "userId",
+                as: "user"
+            }
+        }]).then((todos) => {
+            return res.status(200).json({
+                status: true,
+                data: todos
+            });
+        })
+}
 

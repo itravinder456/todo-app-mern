@@ -40,6 +40,11 @@ const SignUp = () => {
     if (!validateFormResults.formIsValid) {
       return false;
     }
+ 
+      if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(user.email))) {
+         setErrors({email: "invalid",});
+          return false;
+        }
     if (user.password != user.confirmPassword) {
       setErrors({
         password: "invalid",
@@ -56,7 +61,6 @@ const SignUp = () => {
     setUser({ [name]: value });
   };
 
-  console.log("alsndsajkdsndkjdnds", user, errors);
   return (
     <div>
       <RegisterSuccessModal />

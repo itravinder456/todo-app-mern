@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, connect } from "react-redux";
 import { JQuery } from "../../tools/helpers";
-
-const NavBar = () => {
-  const disaptch = useDispatch();
+import moment from 'moment'
+import { userLogsAction } from "../../Redux/adminActions/admin.actions";
+const NavBar = (props) => {
   const [menu, setMenu] = useState(false);
-
+  
+  const dispatch = useDispatch();
   useEffect(() => {
     JQuery();
   }, []);
+  const handleGetUserLogs=()=>{
+    dispatch(userLogsAction())
+  }
+  console.log("acsckskcbascjsabcs",props.userLogs)
   return (
     <>
       <div className="navbarFixed">
@@ -51,28 +56,31 @@ const NavBar = () => {
             <ul class="navbar-nav bellIcon  fs-14">
               <li class="nav-item">
                 <a class="nav-link" href="#">
+                  
                 <div className="icons">
-                  <div className="notification">
+                  <div onMouseOver={ handleGetUserLogs} className="notification">
                     <a href="#">
                     </a><div className="notBtn" href="#"><a href="#">
                         {/*Number supports double digets and automaticly hides itself when there is nothing between divs */}
-                        <div className="number">2</div>
-                        <i className="fas fa-bell" />
+                        <div className="number">{props.userLogs?props.userLogs.length:"0"}</div>
+                        <i className="fas fa-bell bellIcon2" />
                       </a><div className="box">
                         <a href="#">
                         </a>
-                        <div className="display">
-                        <div className="cont"><a href="#">{/* Fold this div and try deleting evrything inbetween */}
-                            </a><div className="sec new"><a href="#">
-                              </a><a href="https://codepen.io/Golez/">
-                                <div className="profCont">
-                                  {/* <img className="profile" src="https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg" /> */}
-                                </div>
-                                <div className="txt">James liked your post: "Pure css notification box"</div>
-                                <div className="txt sub">11/7 - 2:30 pm</div>
-                              </a>
+                        <div className="">
+                          {
+                            props.userLogs?props.userLogs.map((item,index)=>{
+                              return(<>
+                              
+                               <div key={index} className=""><a href="#">{/* Fold this div and try deleting evrything inbetween */}
+                            </a><div className="sec new">
+                                <div className="txt">{item.user[0].firstName}:{item.action}</div>
+                                <div className="txt sub">{moment(item.dateCreated).format('lll')}</div>
                             </div>
                           </div>
+                              </>)})
+                          :""}
+                     
                         </div>
                       </div>
                     </div>
@@ -90,5 +98,9 @@ const NavBar = () => {
   );
 };
 
-
-export default NavBar;
+const matStateToprops = (state) => {
+  return {
+    userLogs: state.adminReducers.userLogs,
+  };
+};
+export default connect(matStateToprops, null)(NavBar);
