@@ -226,7 +226,7 @@ export function validateForm(validationState, validationFileds) {
   let formIsValid = true;
   let errors = {};
   for (var name in validationFileds) {
-    if (validationState[name] ==="") {
+    if (!validationState[name]) {
       formIsValid = false;
       errors[name] = "This field i required";
     } else {
