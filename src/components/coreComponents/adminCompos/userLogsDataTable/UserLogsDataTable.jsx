@@ -6,26 +6,28 @@ import {
   userLogsAction,
 } from "../../../Redux/adminActions/admin.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "react-redux";
 import { useState } from "react";
 import { globalSearch } from "../../../tools/helpers";
 const UserLogsDataTable = (props) => {
   const [state, setstate] = useState([]);
   const dispatch = useDispatch();
-
+  let  broadCastUpdates=useSelector((state=>state.userTodos.broadCastUpdates))
+  let  userLogs=useSelector((state=>state.adminReducers.userLogs))
+ 
+  
   useEffect(() => {
-    if (props.userLogs) {
-      setstate(props.userLogs);
+    if (userLogs) {
+      setstate(userLogs);
     }
-  }, [props.userLogs]);
+  }, [userLogs]);
 
   useEffect(() => {
     dispatch(userLogsAction());
-  }, [props.broadCastUpdates, dispatch]);
+  }, [broadCastUpdates, dispatch]);
 
   useEffect(() => {
     setstate(
-      globalSearch(props.userLogs ? props.userLogs : [], props.searchString)
+      globalSearch(userLogs ? userLogs : [], props.searchString)
     );
   }, [props.searchString]);
 
@@ -47,10 +49,4 @@ const UserLogsDataTable = (props) => {
     </React.Fragment>
   );
 };
-const matStateToprops = (state) => {
-  return {
-    broadCastUpdates: state.userTodos.broadCastUpdates,
-    userLogs: state.adminReducers.userLogs,
-  };
-};
-export default connect(matStateToprops, null)(UserLogsDataTable);
+export default UserLogsDataTable;

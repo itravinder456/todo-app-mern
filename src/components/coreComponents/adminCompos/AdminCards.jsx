@@ -12,7 +12,7 @@ export const AdminCards = () => {
               <a class="small text-white stretched-link" href="#">
                 View Details
               </a>
-              <div class="small text-white">
+                <div class="small text-white">
                 <i class="fas fa-angle-right"></i>
               </div>
             </div>

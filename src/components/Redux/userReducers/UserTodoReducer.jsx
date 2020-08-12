@@ -1,5 +1,4 @@
-const { default: userConstants } = require("../userConstants/userConstants");
-
+import userActionTypes from '../userActionTypes/userActionTypes'
 const initial_state = {
   userTodos: "",
   broadCastUpdates: false,
@@ -7,7 +6,7 @@ const initial_state = {
 
 const UserTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
-    case userConstants.user_Todos:
+    case userActionTypes.user_Todos:
       if (action.payload.status && action.payload) {
         return {
           ...state,
@@ -15,10 +14,10 @@ const UserTodoReducer = (state = initial_state, action) => {
         };
       }
 
-    case userConstants.broadCastUpdates:
+    case userActionTypes.broadCast_Updates:
       return {
         ...state,
-        broadCastUpdates: action.payload,
+        broadCastUpdates:!(state.broadCastUpdates),
       };
 
     default:

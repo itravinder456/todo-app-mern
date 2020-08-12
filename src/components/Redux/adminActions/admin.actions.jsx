@@ -2,7 +2,7 @@ import {
   postServiceCALLS,
   getServiceCALLS,
 } from "../../tools/helpers";
-import userConstants from "../userConstants/userConstants";
+import userActionTypes from "../userActionTypes/userActionTypes";
 
 const adminTodos = (payload) => {
   return async (dispatch) => {
@@ -15,7 +15,7 @@ const adminTodos = (payload) => {
 export default adminTodos;
 export function adminTodosPayload(payload) {
   return {
-    type: userConstants.admin_Todos,
+    type: userActionTypes.admin_Todos,
     payload,
   };
 }
@@ -31,7 +31,7 @@ export function adminUserAction() {
 
 export function adminUserActionPayload(payload) {
   return {
-    type: userConstants.user_Management,
+    type: userActionTypes.user_Management,
     payload,
   };
 }
@@ -47,7 +47,7 @@ export function userLogsAction() {
 
 export function userLogsPayload(payload) {
   return {
-    type: userConstants.user_Logs,
+    type: userActionTypes.user_Logs,
     payload,
   };
 }

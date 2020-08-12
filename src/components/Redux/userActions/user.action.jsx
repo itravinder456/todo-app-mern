@@ -1,5 +1,5 @@
 import { setCacheObject, postServiceCALLS } from "../../tools/helpers";
-import userConstants from "../userConstants/userConstants";
+import userActionTypes from "../userActionTypes/userActionTypes";
 import config from "../../tools/config";
 
 const loginUserRequest = (payload) => {
@@ -19,7 +19,7 @@ const loginUserRequest = (payload) => {
 export default loginUserRequest;
 export function loginPayload(payload) {
   return {
-    type: userConstants.user_Login,
+    type: userActionTypes.user_Login,
     payload,
   };
 }
@@ -41,7 +41,7 @@ export function signUpUserRequest(payload) {
 
 export function signUpUserPayload(payload) {
   return {
-    type: userConstants.user_Register,
+    type: userActionTypes.user_Register,
     payload,
   };
 }

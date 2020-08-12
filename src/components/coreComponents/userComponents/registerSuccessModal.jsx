@@ -3,18 +3,17 @@ import { Button } from "semantic-ui-react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from 'react-router-dom'
-import { connect } from "react-redux";
 import { signUpUserPayload } from "../../Redux/userActions/user.action";
 
-const RegisterSuccessModal = (props) => {
+const RegisterSuccessModal = () => {
 
-
+  const RegisterUser = useSelector((state) => state.user.RegisterUser);
     let dispatch=useDispatch()
 
   return (
     <Modal
       // {...props}
-      show={props.RegisterUser}
+      show={RegisterUser}
       animation
     
       aria-labelledby="contained-modal-title-vcenter"
@@ -47,11 +46,4 @@ const RegisterSuccessModal = (props) => {
   );
 };
 
-const mapStateToProps=(state)=>{
-
-    return { RegisterUser:state.user.RegisterUser
-     };
-    }
-
-
-export default connect(mapStateToProps, null)(RegisterSuccessModal) ;
+export default RegisterSuccessModal ;

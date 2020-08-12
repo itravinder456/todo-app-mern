@@ -472,7 +472,7 @@ body{
 
 .notBtn:hover > .box{
   transition: 0.5s;
-  height: auto
+  height: 400px
 }
 
 .content{

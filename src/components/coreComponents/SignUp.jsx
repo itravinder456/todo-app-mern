@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { validateForm } from "../tools/helpers";
 
 import React, { useReducer, useState } from "react";
-import { connect } from "react-redux";
 import { signUpUserRequest } from "../Redux/userActions/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import RegisterSuccessModal from "./userComponents/registerSuccessModal";

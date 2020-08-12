@@ -14,12 +14,10 @@ const NavBar = (props) => {
     JQuery();
   }, []);
   const userLogs = useSelector((state) => state.adminReducers.userLogs);
-  const handleGetUserLogs = () => {
-    dispatch(userLogsAction());
-  };
+  const broadCastUpdates = useSelector((state) => state.userTodos.broadCastUpdates);
   useEffect(() => {
     dispatch(userLogsAction());
-  }, []);
+  }, [broadCastUpdates]);
   return (
     <>
       <div className="navbarFixed">
@@ -64,7 +62,6 @@ const NavBar = (props) => {
                   <a class="nav-link" href="#">
                     <div className="icons">
                       <div
-                        onMouseOver={handleGetUserLogs}
                         className="notification"
                       >
                         <a href="#"></a>

@@ -10,7 +10,6 @@ import { toastMessage } from "../../tools/Toaster";
 import Input from "./userTodoModal/Input";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { GetUserTodos } from "../../Redux/userActions/UserTodoAction";
-import { Link } from "react-router-dom";
 import {
   globalSearch,
   postServiceCALLS,
@@ -20,22 +19,21 @@ import { getSocketIOInstance } from "../SocketIO";
 import config from "../../tools/config";
 import { AdminCards } from "../adminCompos/AdminCards";
 
-const UserContent = ({ userTodos }) => {
-  console.log("userTodos", userTodos);
+const UserContent = () => {
   const [addTodo, setAddTodo] = useState(false);
   const [updateTodoObject, setupdateTodoObject] = useState({});
   const [updateTodo, setUpdateTodo] = useState(false);
   const [todos, setTodos] = useState([]);
   let dispatch = useDispatch();
  
-  // const userTodos = useSelector((state) => state.userTodos.userTodos);
-
+  const userTodos = useSelector((state) => state.userTodos.userTodos);
+  const broadCastUpdates = useSelector((state) => state.userTodos.broadCastUpdates);
   useEffect(() => {
     dispatch(GetUserTodos({}));
   }, []);
   useEffect(() => {
     setTodos(userTodos && userTodos.status ? userTodos.data : []);
-  }, [userTodos]);
+  }, [userTodos,broadCastUpdates]);
 
   const handleActionsFromDataTable = async (e, row) => {
     const id = e.target.id;
@@ -149,12 +147,6 @@ const UserContent = ({ userTodos }) => {
     </>
   );
 };
-const matStateToprops = (state) => {
-  console.log("state-------", state);
-  return {
-    userTodos: state.userTodos.userTodos,
-  };
-};
-export default connect(matStateToprops, null)(UserContent);
 
-// export default UserContent
+
+export default UserContent

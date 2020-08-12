@@ -25,7 +25,6 @@ export async function getServiceCALLS(serviceURI, dataObject = {}) {
 
   const prepareURL = hostName + serviceURI;
   var tempResponseObject = {};
-  console.log("prepareURL =", prepareURL, "headers=", headers);
   tempResponseObject = await axios({
     method: "GET",
     url: prepareURL,
@@ -34,7 +33,6 @@ export async function getServiceCALLS(serviceURI, dataObject = {}) {
       format: "json",
     },
   }).then((response) => {
-    console.log("API Response Object (Get Service Call)=", response.data);
     if (
       response.data.message == "Auth failed" ||
       response.data.code == "USER_BLOCKED"
@@ -62,20 +60,12 @@ export async function postServiceCALLS(serviceURI, dataObject = {}) {
   }
   const prepareURL = hostName + serviceURI;
   var tempResponseObject = {};
-  console.log(
-    "prepareURL =",
-    prepareURL,
-    "headers=",
-    headers,
-    "dataObject=",
-    dataObject
-  );
+
   tempResponseObject = await axios
     .post(prepareURL, dataObject, {
       headers: headers,
     })
     .then((response) => {
-      console.log("API Response Object (Post Service Call)=", response.data);
       if (
         response.data.message == "Auth failed" ||
         response.data.code == "USER_BLOCKED"

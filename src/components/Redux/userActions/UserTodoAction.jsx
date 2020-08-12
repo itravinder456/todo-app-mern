@@ -1,5 +1,5 @@
 import { getServiceCALLS } from "../../tools/helpers";
-import userConstants from "../userConstants/userConstants";
+import userActionTypes from "../userActionTypes/userActionTypes";
 
 export function GetUserTodos (payload) {
   return async (dispatch) => {
@@ -10,14 +10,14 @@ export function GetUserTodos (payload) {
 
 export function userTodosPayLoad(payload) {
   return {
-    type: userConstants.user_Todos,
+    type: userActionTypes.user_Todos,
     payload,
   };
 }
 
 export function broadCastUpdates(payload) {
   return {
-    type: userConstants.broadCast_Updates,
+    type: userActionTypes.broadCast_Updates,
     payload,
   };
 }

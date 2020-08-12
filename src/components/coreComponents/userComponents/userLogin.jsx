@@ -1,16 +1,13 @@
 import React, { useReducer, useState } from "react";
-import { connect } from "react-redux";
 import loginUserRequest from "../../Redux/userActions/user.action";
-import userLoginReducer from "../../Redux/userReducers/user.login.reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import {
-  getCacheObject,
   checkSession,
   validateForm,
 } from "../../tools/helpers";
 import { intiateUserSocketConnection } from "../SocketIO";
-const UserLogin = (returnActionReducerObject) => {
+const UserLogin = () => {
  
   const [user, setUser] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -19,8 +16,10 @@ const UserLogin = (returnActionReducerObject) => {
       userName: "",
     }
   );
-  const [errors, setErrors] = useState({});
 
+
+  const [errors, setErrors] = useState({});
+  const loginedUser = useSelector((state) => state.user.loginedUser);
   let dispatch = useDispatch();
   const handleUser = (e, name) => {
     let value = e.target.value;
@@ -87,7 +86,7 @@ const UserLogin = (returnActionReducerObject) => {
                         placeholder="Enter password"
                       />
                     </div>
-                    {returnActionReducerObject.loginedUser == "fail" ? (
+                    {loginedUser == "fail" ? (
                       <div>
                         <h5 className="text-danger pad10">
                           Username or password is invalid!
@@ -140,11 +139,7 @@ const UserLogin = (returnActionReducerObject) => {
   );
 };
 
-const matStateToprops = (state) => {
-  return { loginedUser: state.user.loginedUser };
-};
-
-export default connect(matStateToprops, null)(UserLogin); // this connect is a hoc component
+export default UserLogin; // this connect is a hoc component
 
 // first parameter is getting state calback, second is setting state call back
 // third we have to pass whole current component

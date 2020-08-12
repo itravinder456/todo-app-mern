@@ -3,26 +3,27 @@ import { customStyles } from "../../plugins/CustomCssForDataTable"; /// ikada in
 import React, { useEffect } from "react";
 import { adminUserAction } from "../../../Redux/adminActions/admin.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "react-redux";
 import { useState } from "react";
 import { globalSearch } from "../../../tools/helpers";
 
 const UserManagementDataTable = (props) => {
   const [state, setstate] = useState([]);
   const dispatch = useDispatch();
-
+  let  users=useSelector((state=>state.adminReducers.users))
+  let  broadCastUpdates=useSelector((state=>state.userTodos.broadCastUpdates))
+ 
   useEffect(() => {
-    if (props.users) {
-      setstate(props.users);
+    if (users) {
+      setstate(users);
     }
-  }, [props.users]);
+  }, [users]);
 
   useEffect(() => {
     dispatch(adminUserAction());
-  }, [props.broadCastUpdates, dispatch]);
+  }, [broadCastUpdates, dispatch]);
 
   useEffect(() => {
-    setstate(globalSearch(props.users ? props.users : [], props.searchString));
+    setstate(globalSearch(users ? users : [], props.searchString));
   }, [props.searchString]);
 
   return (
@@ -43,11 +44,4 @@ const UserManagementDataTable = (props) => {
     </React.Fragment>
   );
 };
-const matStateToprops = (state) => {
-  return {
-    adminTodos: state.adminReducers.adminTodos,
-    users: state.adminReducers.users,
-    broadCastUpdates: state.userTodos.broadCastUpdates,
-  };
-};
-export default connect(matStateToprops, null)(UserManagementDataTable);
+export default UserManagementDataTable;

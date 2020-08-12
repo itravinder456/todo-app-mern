@@ -1,4 +1,4 @@
-const { default: userConstants } = require("../userConstants/userConstants");
+import userActionTypes from "../userActionTypes/userActionTypes";
 
 const initial_state = {
   adminTodos: null,
@@ -8,21 +8,20 @@ const initial_state = {
 
 const AdminTodoReducer = (state = initial_state, action) => {
   switch (action.type) {
-    case userConstants.admin_Todos:
+    case userActionTypes.admin_Todos:
       if (action.payload.data) {
           return {
         ...state,
         adminTodos: action.payload.data,
       };
       }
-    
-    case userConstants.user_Management:
+    case userActionTypes.user_Management:
       return {
         ...state,
         users: action.payload.data,
       };
 
-    case userConstants.user_Logs:
+    case userActionTypes.user_Logs:
       return {
         ...state,
         userLogs: action.payload.data,

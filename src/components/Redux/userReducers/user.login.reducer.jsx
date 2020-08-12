@@ -1,4 +1,4 @@
-import userConstants from '../userConstants/userConstants'
+import userActionTypes from '../userActionTypes/userActionTypes'
 
 const initial_state = {
     loginedUser:"" ,
@@ -7,7 +7,7 @@ const initial_state = {
 
 const userLoginReducer = (state = initial_state, action) => {
     switch (action.type) {
-        case userConstants.user_Login:
+        case userActionTypes.user_Login:
             if (action.payload.token!=="fail") {
                 return {
                     ...state,
@@ -19,7 +19,7 @@ const userLoginReducer = (state = initial_state, action) => {
                     loginedUser:action.payload.token
                 }
             }
-            case userConstants.user_Register:
+            case userActionTypes.user_Register:
                     return{
                         ...state,
                           RegisterUser:action.payload 
@@ -28,7 +28,7 @@ const userLoginReducer = (state = initial_state, action) => {
                     }
         default:
             return {
-                state
+                ...state
             }
     }
 }
