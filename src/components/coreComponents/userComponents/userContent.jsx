@@ -32,7 +32,7 @@ const UserContent = () => {
     dispatch(GetUserTodos({}));
   }, []);
   useEffect(() => {
-    setTodos(userTodos && userTodos.status ? userTodos.data : []);
+    setTodos(userTodos && userTodos.status ? userTodos.data : []); 
   }, [userTodos,broadCastUpdates]);
 
   const handleActionsFromDataTable = async (e, row) => {
