@@ -31,7 +31,7 @@ export const columns = [
   },
   {
     name: "Created By",
-    selector: (row) => row["user"][0].firstName + " " + row["user"][0].lastName,
+    selector: (row) =>  row["user"].length>0?row["user"][0].firstName + " " + row["user"][0].lastName:"",
     sortable: true,
     width: "15%",
   },

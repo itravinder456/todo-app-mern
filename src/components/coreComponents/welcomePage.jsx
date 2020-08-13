@@ -7,14 +7,14 @@ const WelcomePage=()=>{
 
           <div className="col-md-12">
             <div className="flex">
-          <div className="col-md-7">
+          <div className="col-md-8">
                         <div className="title">
 
                         <p className="titleFn">Todo's System (MERN)</p>
                         </div>
                         <div className="desContent">
                           <ul>
-                            <li className="todoDes">Admin:  User live  monitoring, and tracking user activities, User Management (Block or Access).</li>
+                            <li className="todoDes">Admin:  User live  monitoring, and tracking user activities, User Management (Grant or Deny Access).</li>
                             <li className="todoDes">User:  Todo's CRUD Operations, Search, Sort, Paginating, Todo success alerts etc.</li>
                           </ul>
 

@@ -131,7 +131,7 @@ const SignUp = () => {
                     </div>
                     <div className="form-group">
                       <label className="large mb-1" htmlFor="inputEmailAddress">
-                        User name
+                        Username
                       </label>
                       <input
                         className="form-control py-4"
@@ -142,7 +142,7 @@ const SignUp = () => {
                         id="inputEmailAddress"
                         type="email"
                         aria-describedby="emailHelp"
-                        placeholder="Enter email address"
+                        placeholder="Enter  Username"
                       />
                     </div>
                     <div className="form-row">

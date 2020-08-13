@@ -39,7 +39,7 @@ export const UserManagement = () => {
                     <div className="flex col-md-12" style={{ display: "flex" }}>
                       <div className="col-md-9">
                         <div className="mt-1">
-                          <h3>Users</h3>
+                          <h3>User Management</h3>
                         </div>
                       </div>
                       <div

@@ -659,7 +659,7 @@ html {
   color: transparent !important;
 }
 .devInfoContainer{
-      margin-left: 61% !important;
+  margin-left: 69% !important;
       margin-top: 8% !important;
 }
 .todoDes{
@@ -675,6 +675,7 @@ html {
 }
 .fontStackcontent{
   font-size: 17px;
+  margin-top: -2px;
   color: white;
  
 }
@@ -682,5 +683,5 @@ html {
   color: white;
   font-size: 1.4em;
   font-weight: 600;
-  width: 17%;
+  width: 13%;
 }

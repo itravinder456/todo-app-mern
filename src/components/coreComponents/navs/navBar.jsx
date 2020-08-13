@@ -75,17 +75,15 @@ const NavBar = (props) => {
                           <div className="box">
                             <a href="#"></a>
                             <div className="">
-                              {userLogs
+                              {userLogs &&userLogs.length>0
                                 ? userLogs.map((item, index) => {
                                     return (
                                       <>
                                         <div key={index} className="">
-                                          <a href="#">
-                                            {/* Fold this div and try deleting evrything inbetween */}
-                                          </a>
+                                          
                                           <div className="sec new">
                                             <div className="txt">
-                                              {item.user[0].firstName}:
+                                              {item.user.length>0?item.user[0].firstName:""}:
                                               {item.action}
                                             </div>
                                             <div className="txt sub">
@@ -98,7 +96,17 @@ const NavBar = (props) => {
                                       </>
                                     );
                                   })
-                                : ""}
+                                : <div  className="">
+                               
+                                <div className="sec new">
+                                  <div className="txt">
+                                   No user logs.
+                                  </div>
+                                  <div className="txt sub">
+                                   
+                                  </div>
+                                </div>
+                              </div>}
                             </div>
                           </div>
                         </div>
