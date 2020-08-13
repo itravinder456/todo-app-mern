@@ -32,7 +32,7 @@ const WelcomePage=()=>{
 
             <div class="bg_move pad5">
                     <i class="far fa-address-card devInfoTitle"></i>
-                    <p  className="devInfoTitle"><a className="DevLinks" href="" target="_blank"> #K Sriharsha</a></p>
+                    <p  className="devInfoTitle"><a className="DevLinks" href="https://github.com/hitmangoku/todoMernApp.git" target="_blank"> #K Sriharsha</a></p>
                 </div>
                 <div class="bg_move  pad5">
                     <i class="far fa-address-card devInfoTitle"></i>
