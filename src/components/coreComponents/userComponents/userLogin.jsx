@@ -50,8 +50,8 @@ const UserLogin = () => {
     <div>
       <div>
         <div className="container">
-          <div className="row pullRight">
-            <div className="col-lg-5 ">
+          <div className="">
+            <div className="">
               <div className="card shadow-lg border-0 rounded-lg mt-5">
                 <div className="card-header pad0">
                   <h3 className="text-center font-weight-bold my-4">Login</h3>
@@ -115,7 +115,7 @@ const UserLogin = () => {
                       
                       <Link
                         onClick={handleSubmit}
-                        className="btn btn-primary"
+                        className="btn btn-primary active"
                         to="/"
                       >
                         {" "}
