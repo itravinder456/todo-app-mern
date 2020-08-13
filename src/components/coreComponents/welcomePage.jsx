@@ -17,6 +17,13 @@ const WelcomePage=()=>{
                             <li className="todoDes">Admin:  User live  monitoring, and tracking user activities, User Management (Block or Access).</li>
                             <li className="todoDes">User:  Todo's CRUD Operations, Search, Sort, Paginating, Todo success alerts etc.</li>
                           </ul>
+
+                        </div>
+                        <div className="techStack flex">
+                          <span className="fontStack">Tech Stack : </span><p className="fontStackcontent">
+                          React.js, React.js Hooks, React-Redux, Node.js, MongoDB, Socket-IO, Semantic UI, React Bootstrap, Bootstrap 4.
+                            </p>
+                            
                         </div>
                       </div>
                       <div className="col-md-4">

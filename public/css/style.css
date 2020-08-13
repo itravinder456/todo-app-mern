@@ -670,3 +670,17 @@ html {
 .desContent{
   margin-left: 10%;
 }
+.techStack{
+  margin-left: 8%;
+}
+.fontStackcontent{
+  font-size: 17px;
+  color: white;
+ 
+}
+.fontStack{
+  color: white;
+  font-size: 1.4em;
+  font-weight: 600;
+  width: 17%;
+}
