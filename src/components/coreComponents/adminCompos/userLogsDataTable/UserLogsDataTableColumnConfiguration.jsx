@@ -8,6 +8,7 @@ export const columns = [
     name: "Todo Title",
     selector: (row) => (row["todo"].length>0 ? row["todo"][0].todoTitle : ""),
     sortable: true,
+    wrap: true,
   },
   {
     name: "Todo Status",

@@ -6,11 +6,13 @@ export const columns = memoize((clickHandler) => [
     name: "Todo Title",
     selector: "todoTitle",
     sortable: true,
+    wrap: true,
   },
   {
     name: "Description",
     selector: "todoDescription",
     sortable: true,
+    wrap: true,
   },
   {
     name: "Priority",

@@ -7,12 +7,14 @@ export const columns = [
     selector: "todoTitle",
     sortable: true,
     width: "20%",
+    wrap: true,
   },
   {
     name: "Description",
     selector: "todoDescription",
     sortable: true,
     width: "30%",
+    wrap: true,
   },
   {
     name: "Priority",
