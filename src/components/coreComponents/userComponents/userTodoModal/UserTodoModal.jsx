@@ -106,7 +106,7 @@ const UserTodoModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {props.updateTodo ? "Update Todo" : "Add Todo"}
         </Modal.Title>
