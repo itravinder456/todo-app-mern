@@ -83,7 +83,7 @@ const UserContent = () => {
         <div className="sectionContent  mbP5 ">
           <NavBar />
 
-          <div className="content contentWrapper mt-10">
+          <div className="content mt-10">
             <UserTodoModal
               updateTodoObject={updateTodoObject}
               onClose={() => {
